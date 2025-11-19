@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function Home() {
     return (
         <section className="min-h-[calc(100vh-112px)] bg-[url('/images/carParts.jpg')] bg-cover bg-center">
@@ -9,9 +11,9 @@ export default function Home() {
                     <p className="mt-4 text-xl text-gray-200">
                         Quality parts for all vehicle brands — fast, reliable and affordable.
                     </p>
-                    <button className="mt-6 px-6 py-3 bg-red-500 hover:bg-red-600 text-white rounded-lg text-lg shadow-lg transition">
+                    <Link to={'/parts/catalog'} className="mt-6 px-6 py-3 bg-red-500 hover:bg-red-600 text-white rounded-lg text-lg shadow-lg transition">
                         Explore Catalog
-                    </button>
+                    </Link>
                 </div>
             </div>
             <section className="py-10 bg-transparent">
@@ -68,7 +70,6 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-
         </section>
     );
 }

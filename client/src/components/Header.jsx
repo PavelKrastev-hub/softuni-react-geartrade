@@ -7,13 +7,37 @@ export default function Header() {
                 <h1 className="text-2xl font-bold tracking-wide">
                     Gear<span className="text-red-500">Trade</span>
                 </h1>
-
                 <ul className="flex gap-6 text-lg">
-                    <li><Link to="/" className="hover:text-red-400">Home</Link></li>
-                    <li><Link to="/catalog" className="hover:text-red-400">Catalog</Link></li>
-                    <li><Link to="/create" className="hover:text-red-400">Create</Link></li>
-                    <li><Link to="/login" className="hover:text-red-400">Login</Link></li>
-                    <li><Link to="/register" className="hover:text-red-400">Register</Link></li>
+                    <li>
+                        <Link to="/" className="hover:text-red-400">
+                            Home
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/catalog" className="hover:text-red-400">
+                            About Us
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/create" className="hover:text-red-400">
+                            Create
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/login" className="hover:text-red-400">
+                            Login
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/register" className="hover:text-red-400">
+                            Register
+                        </Link>
+                    </li>
+                    <ul>
+                        <Link to="/register" className="hover:text-red-400">
+                            My Offers
+                        </Link>
+                    </ul>
                 </ul>
             </nav>
         </header>

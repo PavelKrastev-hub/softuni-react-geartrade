@@ -11,9 +11,13 @@ export default function Home() {
                     <p className="mt-4 text-xl text-gray-200">
                         Quality parts for all vehicle brands — fast, reliable and affordable.
                     </p>
-                    <Link to={'/parts/catalog'} className="mt-6 px-6 py-3 bg-red-500 hover:bg-red-600 text-white rounded-lg text-lg shadow-lg transition">
+                    <Link
+                        to={'/parts/catalog'}
+                        className="mt-6 inline-block px-8 py-4 bg-red-500 hover:bg-red-600 text-white rounded-xl text-lg font-semibold shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                    >
                         Explore Catalog
                     </Link>
+
                 </div>
             </div>
             <section className="py-10 bg-transparent">

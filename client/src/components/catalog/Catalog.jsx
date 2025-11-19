@@ -8,14 +8,18 @@ export default function Catalog() {
             {/* overlay */}
             <div className="bg-black/0 w-full h-full px-6 py-16">
 
-                <div className="max-w-6xl mx-auto text-center text-white mb-14">
-                    <h1 className="text-5xl font-extrabold drop-shadow-lg">
+                <div className="max-w-6xl mx-auto text-center mb-14 bg-black/40 px-6 py-8 rounded-lg">
+                    <h1 className="text-5xl font-extrabold text-white drop-shadow-lg">
                         Available Auto Parts
                     </h1>
-                    <p className="mt-4 text-xl text-gray-300">
+                    <p className="mt-4 text-xl text-white drop-shadow-md">
                         Browse high-quality car parts at the best prices.
                     </p>
+
+
                 </div>
+
+
 
                 {/* grid */}
                 <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">

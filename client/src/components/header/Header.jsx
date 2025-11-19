@@ -34,7 +34,7 @@ export default function Header() {
                         </Link>
                     </li>
                     <ul>
-                        <Link to="/register" className="hover:text-red-400">
+                        <Link to="/parts/myOffers" className="hover:text-red-400">
                             My Offers
                         </Link>
                     </ul>

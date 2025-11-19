@@ -14,7 +14,7 @@ export default function Header() {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/catalog" className="hover:text-red-400">
+                        <Link to="/about" className="hover:text-red-400">
                             About Us
                         </Link>
                     </li>

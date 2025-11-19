@@ -5,6 +5,7 @@ import Header from "./components/header/Header.jsx";
 import Footer from "./components/footer/Footer.jsx";
 import Catalog from "./components/catalog/Catalog.jsx";
 import Register from "./components/register/Register.jsx";
+import AboutUs from "./components/about/aboutUs.jsx";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/parts/catalog" element={<Catalog />} />
+                    <Route path="/about" element={<AboutUs />} />
                 </Routes>
             </main>
 

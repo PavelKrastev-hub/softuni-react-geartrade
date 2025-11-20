@@ -17,9 +17,9 @@ export default function Home() {
                     >
                         Explore Catalog
                     </Link>
-
                 </div>
             </div>
+
             <section className="py-10 bg-transparent">
                 <div className="max-w-6xl mx-auto px-6">
                     <h3 className="text-3xl font-bold mb-6 text-gray-900">
@@ -36,7 +36,6 @@ export default function Home() {
                             />
                             <h4 className="text-xl font-semibold text-gray-800">Oil Filter Bosch</h4>
                             <p className="text-red-600 text-lg font-bold mt-1">$19.99</p>
-
                             <button className="mt-auto bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg text-sm font-semibold transition">
                                 View Details
                             </button>
@@ -51,7 +50,6 @@ export default function Home() {
                             />
                             <h4 className="text-xl font-semibold text-gray-800">Front Brake Pads</h4>
                             <p className="text-red-600 text-lg font-bold mt-1">$49.00</p>
-
                             <button className="mt-auto bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg text-sm font-semibold transition">
                                 View Details
                             </button>
@@ -66,7 +64,6 @@ export default function Home() {
                             />
                             <h4 className="text-xl font-semibold text-gray-800">Air Filter Mann</h4>
                             <p className="text-red-600 text-lg font-bold mt-1">$24.50</p>
-
                             <button className="mt-auto bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg text-sm font-semibold transition">
                                 View Details
                             </button>

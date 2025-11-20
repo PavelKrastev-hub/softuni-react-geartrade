@@ -6,6 +6,7 @@ import Footer from "./components/footer/Footer.jsx";
 import Catalog from "./components/catalog/Catalog.jsx";
 import Register from "./components/register/Register.jsx";
 import AboutUs from "./components/about/aboutUs.jsx";
+import Create from "./components/createPart/CreatePart.jsx";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                     <Route path="/register" element={<Register />} />
                     <Route path="/parts/catalog" element={<Catalog />} />
                     <Route path="/about" element={<AboutUs />} />
+                    <Route path="/parts/create" element={<Create />} />
                 </Routes>
             </main>
 

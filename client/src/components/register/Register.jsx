@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 export default function Register({
     onRegister,
@@ -11,8 +11,6 @@ export default function Register({
         const password = formData.get('password');
         const rePass = formData.get('rePass');
 
-        console.log(email, username, password, rePass);
-
         if (!email || !password || !username) {
             return alert('Email,password and username are required!');
         }
@@ -21,9 +19,13 @@ export default function Register({
             return alert('Passwords must match!');
         }
 
-        onRegister(email);
+        try {
+            onRegister(email, username, password);
 
-        navigate('/');
+            navigate('/');
+        } catch (err) {
+            return alert(err.message);
+        }
     };
 
     return (
@@ -86,12 +88,12 @@ export default function Register({
                         </button>
                         <p className="text-center text-gray-600 mt-6">
                             Already have an account?{" "}
-                            <a
-                                href="/login"
+                            <Link
+                                to="/login"
                                 className="text-red-600 hover:underline"
                             >
                                 Login
-                            </a>
+                            </Link>
                         </p>
                     </form>
                 </div>

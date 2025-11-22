@@ -10,13 +10,30 @@ import Create from "./components/createPart/CreatePart.jsx";
 import { useState } from "react";
 
 function App() {
+    const [registeredUsers, setRegisteredUsers] = useState([]);
     const [user, setUser] = useState(null);
 
-    const authHandler = (email) => {
-        setUser({
-            email,
-        })
+    const registerHandler = (email, username, password) => {
+        if (registeredUsers.some(user => user.email === email)) {
+            throw new Error('This email already exists!');
+        }
+
+        if (registeredUsers.some(user => user.username === username)) {
+            throw new Error('This username already exists!');
+        }
+
+        setRegisteredUsers((state) => [...state, { email, username, password }]);
     }
+
+    const loginHandler = (email, password) => {
+        const user = registeredUsers.find(user => user.email === email && user.password === password);
+
+        if (!user) {
+            throw new Error('Invalid email or password!');
+        }
+
+        setUser(user);
+    };
 
     return (
         <div className="app-container">
@@ -25,8 +42,8 @@ function App() {
             <main className="main-content">
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login onLogin={authHandler}/>} />
-                    <Route path="/register" element={<Register onRegister={authHandler} />} />
+                    <Route path="/login" element={<Login onLogin={loginHandler} />} />
+                    <Route path="/register" element={<Register onRegister={registerHandler} />} />
                     <Route path="/parts/catalog" element={<Catalog />} />
                     <Route path="/about" element={<AboutUs />} />
                     <Route path="/parts/create" element={<Create />} />

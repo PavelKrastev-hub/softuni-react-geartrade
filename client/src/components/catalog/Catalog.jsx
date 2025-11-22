@@ -1,6 +1,26 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import PartCard from "../part-card/PartCard.jsx";
+
+const BASE_URL = 'http://localhost:3030/jsonstore/parts';
 
 export default function Catalog() {
+    const [parts, setParts] = useState([]);
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await fetch(BASE_URL);
+
+                const result = await response.json();
+
+                setParts(Object.values(result));
+            } catch (error) {
+                alert(error.message);
+            }
+        })();
+    }, []);
+
     return (
         <section
             className="min-h-[calc(100vh-112px)] bg-[url('/images/carParts.jpg')] bg-cover bg-center bg-fixed"
@@ -24,59 +44,7 @@ export default function Catalog() {
                 {/* grid */}
                 <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
 
-                    {/* Item 1 */}
-                    <div className="bg-gray-800 rounded-xl shadow-xl overflow-hidden hover:-translate-y-1 hover:shadow-2xl transition">
-                        <div
-                            className="h-48 bg-cover bg-center"
-                            style={{ backgroundImage: 'url("/images/brakes.jpg")' }}
-                        />
-                        <div className="p-5 text-white">
-                            <h3 className="text-2xl font-semibold">Sport Brake Pads</h3>
-                            <p className="mt-2 text-red-400 text-lg font-bold">120 лв.</p>
-                            <Link
-                                to="/catalog/1"
-                                className="mt-4 inline-block bg-red-500 hover:bg-red-600 py-2 px-4 rounded-lg transition"
-                            >
-                                View Details
-                            </Link>
-                        </div>
-                    </div>
-
-                    {/* Item 2 */}
-                    <div className="bg-gray-800 rounded-xl shadow-xl overflow-hidden hover:-translate-y-1 hover:shadow-2xl transition">
-                        <div
-                            className="h-48 bg-cover bg-center"
-                            style={{ backgroundImage: 'url("/images/engineOil.jpg")' }}
-                        />
-                        <div className="p-5 text-white">
-                            <h3 className="text-2xl font-semibold">Premium Engine Oil 5W-40</h3>
-                            <p className="mt-2 text-red-400 text-lg font-bold">85 лв.</p>
-                            <Link
-                                to="/catalog/2"
-                                className="mt-4 inline-block bg-red-500 hover:bg-red-600 py-2 px-4 rounded-lg transition"
-                            >
-                                View Details
-                            </Link>
-                        </div>
-                    </div>
-
-                    {/* Item 3 */}
-                    <div className="bg-gray-800 rounded-xl shadow-xl overflow-hidden hover:-translate-y-1 hover:shadow-2xl transition">
-                        <div
-                            className="h-48 bg-cover bg-center"
-                            style={{ backgroundImage: 'url("/images/sparkPlugs.jpg")' }}
-                        />
-                        <div className="p-5 text-white">
-                            <h3 className="text-2xl font-semibold">NGK Spark Plugs (4 pack)</h3>
-                            <p className="mt-2 text-red-400 text-lg font-bold">48 лв.</p>
-                            <Link
-                                to="/catalog/3"
-                                className="mt-4 inline-block bg-red-500 hover:bg-red-600 py-2 px-4 rounded-lg transition"
-                            >
-                                View Details
-                            </Link>
-                        </div>
-                    </div>
+                    {parts.map(part => <PartCard key={part._id} {...part} />)}
 
                 </div>
 

@@ -30,12 +30,12 @@ export default function Home() {
                         {/* Card 1 */}
                         <div className="bg-white rounded-xl shadow-md p-4 border border-gray-200 flex flex-col">
                             <img
-                                src="/images/sample1.jpg"
-                                alt="Product"
-                                className="w-full h-40 object-cover rounded-lg mb-4"
+                                src='https://www.ilmotorsport.de/shop/xxlpics/ND2-7033119/1/1280/1280/Brake-pad-set-Brembo-front-MK4-1.jpg'
+                                alt='name'
+                                className="w-full h- object-cover rounded-lg mb-4"
                             />
-                            <h4 className="text-xl font-semibold text-gray-800">Oil Filter Bosch</h4>
-                            <p className="text-red-600 text-lg font-bold mt-1">$19.99</p>
+                            <h4 className="text-xl font-semibold text-gray-800">Name</h4>
+                            <p className="text-red-600 text-lg font-bold mt-1">$55</p>
                             <button className="mt-auto bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg text-sm font-semibold transition">
                                 View Details
                             </button>

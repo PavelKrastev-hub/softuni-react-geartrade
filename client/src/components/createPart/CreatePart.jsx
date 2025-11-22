@@ -4,48 +4,56 @@ export default function CreatePart() {
             {/* Overlay за по-добър контраст */}
             <div className="w-full h-full bg-black/50 flex items-center justify-center px-6">
                 <div className="bg-white rounded-xl shadow-xl p-10 w-full max-w-3xl">
-                    <h2 className="text-3xl font-bold mb-6 text-gray-900 text-center">
-                        Добавяне на авточаст
+                    <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">
+                        Add Offer to <span className="text-red-600">GearTrade</span>
                     </h2>
                     <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <input
                             type="text"
-                            placeholder="Име на авточастта"
+                            placeholder="Name of part"
+                            name="name"
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <input
                             type="text"
-                            placeholder="Категория"
+                            placeholder="Category"
+                            name="category"
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <input
                             type="text"
-                            placeholder="OEM номер"
+                            placeholder="OEM number"
+                            name="oem_number"
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <input
                             type="text"
-                            placeholder="Подходящ за автомобил"
+                            placeholder="Suitable to..."
+                            name="suitable_to"
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <input
                             type="number"
-                            placeholder="Цена"
+                            placeholder="Price"
+                            name="price"
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <input
                             type="number"
-                            placeholder="Количество"
+                            placeholder="Quantity"
+                            name="quantity"
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <textarea
-                            placeholder="Кратко описание"
+                            placeholder="Description"
+                            name="description"
                             rows={3}
                             className="w-full p-3 rounded border border-gray-300 md:col-span-2"
                         ></textarea>
                         <input
                             type="text"
-                            placeholder="URL на изображение"
+                            placeholder="Image URL"
+                            name="imageUrl"
                             className="w-full p-3 rounded border border-gray-300 md:col-span-2"
                         />
                         <button

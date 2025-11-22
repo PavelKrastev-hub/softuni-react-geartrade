@@ -1,4 +1,19 @@
 export default function Register() {
+    const registerSubmit = (formData) => {
+        const email = formData.get('email');
+        const username = formData.get('usernam');
+        const password = formData.get('password');
+        const rePass = formData.get('repass');
+
+        if (!email || !password) {
+            return alert('Email and password are required!')
+        }
+
+        if (password !== rePass) {
+            return alert('Passwords must match!');
+        }
+    };
+
     return (
         <section
             className="min-h-[calc(100vh-112px)] flex items-center justify-center bg-[url('/images/carParts.jpg')] bg-cover bg-center"
@@ -9,7 +24,7 @@ export default function Register() {
                         Register to <span className="text-red-600">GearTrade</span>
                     </h2>
 
-                    <form className="space-y-5">
+                    <form className="space-y-5" action={registerSubmit}>
                         {/* Email */}
                         <div>
                             <label className="text-black font-medium">Email</label>
@@ -45,7 +60,7 @@ export default function Register() {
                             <label className="text-black font-medium">Repeat Password</label>
                             <input
                                 type="password"
-                                name="repass"
+                                name="rePass"
                                 className="w-full mt-1 p-3 rounded-lg bg-white border border-gray-300 focus:border-blue-500 outline-none" placeholder="Repeat password"
                             />
                         </div>

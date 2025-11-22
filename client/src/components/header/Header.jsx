@@ -1,6 +1,8 @@
 import { Link } from "react-router";
 
-export default function Header() {
+export default function Header({
+    user,
+}) {
     return (
         <header className="bg-gray-900 text-white">
             <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">

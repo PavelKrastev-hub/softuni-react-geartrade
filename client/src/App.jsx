@@ -7,17 +7,26 @@ import Catalog from "./components/catalog/Catalog.jsx";
 import Register from "./components/register/Register.jsx";
 import AboutUs from "./components/about/aboutUs.jsx";
 import Create from "./components/createPart/CreatePart.jsx";
+import { useState } from "react";
 
 function App() {
+    const [user, setUser] = useState(null);
+
+    const registerHandler = (email) => {
+        setUser({
+            email,
+        })
+    }
+
     return (
         <div className="app-container">
-            <Header />
+            <Header user={user} />
 
             <main className="main-content">
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
+                    <Route path="/register" element={<Register user={user} onRegister={registerHandler} />} />
                     <Route path="/parts/catalog" element={<Catalog />} />
                     <Route path="/about" element={<AboutUs />} />
                     <Route path="/parts/create" element={<Create />} />

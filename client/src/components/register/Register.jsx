@@ -1,17 +1,25 @@
-export default function Register() {
+export default function Register({
+    user,
+    onRegister,
+}) {
+
     const registerSubmit = (formData) => {
         const email = formData.get('email');
-        const username = formData.get('usernam');
+        const username = formData.get('username');
         const password = formData.get('password');
-        const rePass = formData.get('repass');
+        const rePass = formData.get('rePass');
 
-        if (!email || !password) {
-            return alert('Email and password are required!')
+        console.log(email, username, password, rePass);
+
+        if (!email || !password || !username) {
+            return alert('Email,password and username are required!');
         }
 
         if (password !== rePass) {
             return alert('Passwords must match!');
         }
+
+        onRegister(email);
     };
 
     return (
@@ -26,6 +34,8 @@ export default function Register() {
 
                     <form className="space-y-5" action={registerSubmit}>
                         {/* Email */}
+                        {user && <h2>You are already registered with {user.email}</h2>}
+
                         <div>
                             <label className="text-black font-medium">Email</label>
                             <input

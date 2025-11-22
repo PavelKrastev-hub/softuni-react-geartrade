@@ -8,6 +8,7 @@ import Register from "./components/register/Register.jsx";
 import AboutUs from "./components/about/aboutUs.jsx";
 import Create from "./components/createPart/CreatePart.jsx";
 import { useState } from "react";
+import Logout from "./components/logout/Logout.jsx";
 
 function App() {
     const [registeredUsers, setRegisteredUsers] = useState([]);
@@ -22,7 +23,7 @@ function App() {
             throw new Error('This username already exists!');
         }
 
-        const newUser = { email, password };
+        const newUser = { email, password, username };
 
         setRegisteredUsers((state) => [...state, { email, username, password }]);
 
@@ -39,6 +40,10 @@ function App() {
         setUser(user);
     };
 
+    const logoutHandler = () => {
+        setUser(null);
+    };
+
     return (
         <div className="app-container">
             <Header user={user} />
@@ -51,6 +56,7 @@ function App() {
                     <Route path="/parts/catalog" element={<Catalog />} />
                     <Route path="/about" element={<AboutUs />} />
                     <Route path="/parts/create" element={<Create />} />
+                    <Route path="/logout" element={<Logout onLogout={logoutHandler} />} />
                 </Routes>
             </main>
 

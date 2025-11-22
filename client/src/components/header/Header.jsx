@@ -33,11 +33,16 @@ export default function Header() {
                             Register
                         </Link>
                     </li>
-                    <ul>
+                    <li>
                         <Link to="/parts/myOffers" className="hover:text-red-400">
                             My Offers
                         </Link>
-                    </ul>
+                    </li>
+                    <li>
+                        <Link to="/logout" className="hover:text-red-400">
+                            Logout
+                        </Link>
+                    </li>
                 </ul>
             </nav>
         </header>

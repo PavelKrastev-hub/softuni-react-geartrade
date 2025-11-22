@@ -22,7 +22,11 @@ function App() {
             throw new Error('This username already exists!');
         }
 
+        const newUser = { email, password };
+
         setRegisteredUsers((state) => [...state, { email, username, password }]);
+
+        setUser(newUser);
     }
 
     const loginHandler = (email, password) => {

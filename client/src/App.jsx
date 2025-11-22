@@ -12,7 +12,7 @@ import { useState } from "react";
 function App() {
     const [user, setUser] = useState(null);
 
-    const registerHandler = (email) => {
+    const authHandler = (email) => {
         setUser({
             email,
         })
@@ -25,8 +25,8 @@ function App() {
             <main className="main-content">
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register user={user} onRegister={registerHandler} />} />
+                    <Route path="/login" element={<Login onLogin={authHandler}/>} />
+                    <Route path="/register" element={<Register onRegister={authHandler} />} />
                     <Route path="/parts/catalog" element={<Catalog />} />
                     <Route path="/about" element={<AboutUs />} />
                     <Route path="/parts/create" element={<Create />} />

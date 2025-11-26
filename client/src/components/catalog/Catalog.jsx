@@ -35,19 +35,14 @@ export default function Catalog() {
                     <p className="mt-4 text-xl text-white drop-shadow-md">
                         Browse high-quality car parts at the best prices.
                     </p>
-
-
                 </div>
-
-
 
                 {/* grid */}
-                <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                {parts.length === 0 && <p className="col-span-full text-center text-xl font-semibold text-gray-700 bg-white/80 py-6 rounded-xl shadow-md"> No published parts yet! </p>}
 
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {parts.map(part => <PartCard key={part._id} {...part} />)}
-
                 </div>
-
             </div>
         </section>
     );

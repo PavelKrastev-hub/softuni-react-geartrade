@@ -1,6 +1,25 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import PartCard from "../part-card/PartCard.jsx";
+
+const BASE_URL = 'http://localhost:3030/jsonstore/parts';
 
 export default function Home() {
+    const [parts, setParts] = useState([]);
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const response = await fetch(BASE_URL);
+
+                const result = await response.json();
+
+                setParts(Object.values(result));
+            } catch (error) {
+                alert(error.message);
+            }
+        })();
+    }, []);
     return (
         <section className="min-h-[calc(100vh-112px)] bg-[url('/images/carParts.jpg')] bg-cover bg-center">
             <div className="bg-black/50 w-full h-full flex items-center">
@@ -26,48 +45,10 @@ export default function Home() {
                         Latest Offers
                     </h3>
 
+                    {parts.length === 0 && <p className="col-span-full text-center text-xl font-semibold text-gray-700 bg-white/80 py-6 rounded-xl shadow-md"> No published parts yet! </p>}
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {/* Card 1 */}
-                        <div className="bg-white rounded-xl shadow-md p-4 border border-gray-200 flex flex-col">
-                            <img
-                                src='https://www.ilmotorsport.de/shop/xxlpics/ND2-7033119/1/1280/1280/Brake-pad-set-Brembo-front-MK4-1.jpg'
-                                alt='name'
-                                className="w-full h- object-cover rounded-lg mb-4"
-                            />
-                            <h4 className="text-xl font-semibold text-gray-800">Name</h4>
-                            <p className="text-red-600 text-lg font-bold mt-1">$55</p>
-                            <button className="mt-auto bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg text-sm font-semibold transition">
-                                View Details
-                            </button>
-                        </div>
-
-                        {/* Card 2 */}
-                        <div className="bg-white rounded-xl shadow-md p-4 border border-gray-200 flex flex-col">
-                            <img
-                                src="/images/sample2.jpg"
-                                alt="Product"
-                                className="w-full h-40 object-cover rounded-lg mb-4"
-                            />
-                            <h4 className="text-xl font-semibold text-gray-800">Front Brake Pads</h4>
-                            <p className="text-red-600 text-lg font-bold mt-1">$49.00</p>
-                            <button className="mt-auto bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg text-sm font-semibold transition">
-                                View Details
-                            </button>
-                        </div>
-
-                        {/* Card 3 */}
-                        <div className="bg-white rounded-xl shadow-md p-4 border border-gray-200 flex flex-col">
-                            <img
-                                src="/images/sample3.jpg"
-                                alt="Product"
-                                className="w-full h-40 object-cover rounded-lg mb-4"
-                            />
-                            <h4 className="text-xl font-semibold text-gray-800">Air Filter Mann</h4>
-                            <p className="text-red-600 text-lg font-bold mt-1">$24.50</p>
-                            <button className="mt-auto bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg text-sm font-semibold transition">
-                                View Details
-                            </button>
-                        </div>
+                        {parts.map(part => <PartCard key={part._id} {...part} />)}
                     </div>
                 </div>
             </section>

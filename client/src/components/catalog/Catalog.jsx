@@ -8,17 +8,9 @@ export default function Catalog() {
     const [parts, setParts] = useState([]);
 
     useEffect(() => {
-        (async () => {
-            try {
-                const response = await fetch(BASE_URL);
-
-                const result = await response.json();
-
-                setParts(Object.values(result));
-            } catch (error) {
-                alert(error.message);
-            }
-        })();
+        fetch(BASE_URL)
+            .then(response => response.json())
+            .then(result => setParts(Object.values(result)))
     }, []);
 
     return (

@@ -5,21 +5,20 @@ import PartCard from "../part-card/PartCard.jsx";
 const BASE_URL = 'http://localhost:3030/jsonstore/parts';
 
 export default function Home() {
-    const [parts, setParts] = useState([]);
+    const [latestParts, setLatestParts] = useState([]);
 
     useEffect(() => {
-        (async () => {
-            try {
-                const response = await fetch(BASE_URL);
+        fetch(BASE_URL)
+            .then(response => response.json())
+            .then(result => {
+                const parts = Object.values(result)
+                    .sort((a, b) => b._createdOn - a._createdOn)
+                    .slice(0, 3);
 
-                const result = await response.json();
-
-                setParts(Object.values(result));
-            } catch (error) {
-                alert(error.message);
-            }
-        })();
+                setLatestParts(parts);
+            })
     }, []);
+
     return (
         <section className="min-h-[calc(100vh-112px)] bg-[url('/images/carParts.jpg')] bg-cover bg-center">
             <div className="bg-black/50 w-full h-full flex items-center">
@@ -45,10 +44,10 @@ export default function Home() {
                         Latest Offers
                     </h3>
 
-                    {parts.length === 0 && <p className="col-span-full text-center text-xl font-semibold text-gray-700 bg-white/80 py-6 rounded-xl shadow-md"> No published parts yet! </p>}
+                    {latestParts.length === 0 && <p className="col-span-full text-center text-xl font-semibold text-gray-700 bg-white/80 py-6 rounded-xl shadow-md"> No published parts yet! </p>}
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {parts.map(part => <PartCard key={part._id} {...part} />)}
+                        {latestParts.map(part => <PartCard key={part._id} {...part} />)}
                     </div>
                 </div>
             </section>

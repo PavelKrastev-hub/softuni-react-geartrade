@@ -39,9 +39,9 @@ export default function CreatePart() {
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <input
-                            type="number"
-                            placeholder="Quantity"
-                            name="quantity"
+                            type="text"
+                            placeholder="brand"
+                            name="brand"
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <textarea
@@ -60,7 +60,7 @@ export default function CreatePart() {
                             type="submit"
                             className="md:col-span-2 bg-red-500 hover:bg-red-600 text-white p-3 rounded-lg font-semibold transition"
                         >
-                            Добави авточаст
+                            Upload offer
                         </button>
                     </form>
                 </div>

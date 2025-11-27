@@ -9,6 +9,7 @@ import AboutUs from "./components/about/aboutUs.jsx";
 import Create from "./components/createPart/CreatePart.jsx";
 import { useState } from "react";
 import Logout from "./components/logout/Logout.jsx";
+import Details from "./components/details/Details.jsx";
 
 function App() {
     const [registeredUsers, setRegisteredUsers] = useState([]);
@@ -53,10 +54,11 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login onLogin={loginHandler} />} />
                     <Route path="/register" element={<Register onRegister={registerHandler} />} />
-                    <Route path="/parts/catalog" element={<Catalog />} />
+                    <Route path="/parts" element={<Catalog />} />
                     <Route path="/about" element={<AboutUs />} />
                     <Route path="/parts/create" element={<Create />} />
                     <Route path="/logout" element={<Logout onLogout={logoutHandler} />} />
+                    <Route path="/parts/:partId/details" element={<Details />} />
                 </Routes>
             </main>
 

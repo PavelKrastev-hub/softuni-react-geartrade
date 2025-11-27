@@ -1,5 +1,7 @@
+import { Link } from "react-router";
+
 export default function PartCard({
-    // id,
+    id,
     name,
     // category,
     // oem_number,
@@ -18,9 +20,11 @@ export default function PartCard({
             />
             <h4 className="text-xl font-semibold text-gray-800">{name}</h4>
             <p className="text-red-600 text-lg font-bold mt-1">${price.toFixed(2)}</p>
-            <button className="mt-auto bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg text-sm font-semibold transition">
+            <Link
+                to={`/parts/${id}/details`}
+                className="mt-auto block w-full bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg text-sm font-semibold text-center transition">
                 View Details
-            </button>
+            </Link>
         </div>
     );
 }

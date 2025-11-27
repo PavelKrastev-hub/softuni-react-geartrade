@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
 import PartCard from "../part-card/PartCard.jsx";
-
-const BASE_URL = 'http://localhost:3030/jsonstore/parts';
+import { BASE_URL } from "../../utils/constants.js";
 
 export default function Catalog() {
     const [parts, setParts] = useState([]);

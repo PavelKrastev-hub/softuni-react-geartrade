@@ -1,6 +1,6 @@
-[
-  {
-    "id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+{
+  "f47ac10b-58cc-4372-a567-0e02b2c3d479": {
+    "_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
     "name": "Brake Pad Set",
     "category": "Brakes",
     "oem_number": "BP12345",
@@ -14,8 +14,8 @@
     "image_url": "https://www.ilmotorsport.de/shop/xxlpics/ND2-7033119/1/1280/1280/Brake-pad-set-Brembo-front-MK4-1.jpg",
     "_createdOn": 1739964000000
   },
-  {
-    "id": "9b2d6c8f-1bcd-4f0a-8f02-3c1234de5678",
+  "9b2d6c8f-1bcd-4f0a-8f02-3c1234de5678": {
+    "_id": "9b2d6c8f-1bcd-4f0a-8f02-3c1234de5678",
     "name": "Air Filter",
     "category": "Engine",
     "oem_number": "AF67890",
@@ -29,8 +29,8 @@
     "image_url": "https://renovaciq.bg/wp-content/uploads/2024/04/maslen-filtar-mann-filter-w-814_80-b.webp",
     "_createdOn": 1740255600000
   },
-  {
-    "id": "3c6e0b8a-9d2f-4c11-8d45-12ab34cd5678",
+  "3c6e0b8a-9d2f-4c11-8d45-12ab34cd5678": {
+    "_id": "3c6e0b8a-9d2f-4c11-8d45-12ab34cd5678",
     "name": "Headlight Bulb H7",
     "category": "Lighting",
     "oem_number": "HB11223",
@@ -44,8 +44,8 @@
     "image_url": "https://cbradleymotorsport.co.uk/cdn/shop/products/el1109_1024x1024.jpg?v=1641918478",
     "_createdOn": 1740428400000
   },
-  {
-    "id": "a1d4e3f9-12b7-4c33-9c85-7f1203dabc11",
+  "a1d4e3f9-12b7-4c33-9c85-7f1203dabc11": {
+    "_id": "a1d4e3f9-12b7-4c33-9c85-7f1203dabc11",
     "name": "Oil Filter",
     "category": "Engine",
     "oem_number": "OF22331",
@@ -59,8 +59,8 @@
     "image_url": "https://hndautomotiveparts.com/cdn/shop/files/F026407204.jpg?v=1697457628",
     "_createdOn": 1740601200000
   },
-  {
-    "id": "c7f3d9e1-45fd-4b72-8d29-2e402a7cc932",
+  "c7f3d9e1-45fd-4b72-8d29-2e402a7cc932": {
+    "_id": "c7f3d9e1-45fd-4b72-8d29-2e402a7cc932",
     "name": "Front Shock Absorber",
     "category": "Suspension",
     "oem_number": "SA55678",
@@ -74,8 +74,8 @@
     "image_url": "https://i.ebayimg.com/images/g/4GEAAOSwO2BlMOm8/s-l1200.jpg",
     "_createdOn": 1740774000000
   },
-  {
-    "id": "d8e0bc42-3a92-4113-989e-234ccbbfa721",
+  "d8e0bc42-3a92-4113-989e-234ccbbfa721": {
+    "_id": "d8e0bc42-3a92-4113-989e-234ccbbfa721",
     "name": "Spark Plug Set",
     "category": "Ignition",
     "oem_number": "SP99887",
@@ -89,4 +89,4 @@
     "image_url": "https://m.media-amazon.com/images/I/81U-owLKwTL.jpg",
     "_createdOn": 1740946800000
   }
-]
+}

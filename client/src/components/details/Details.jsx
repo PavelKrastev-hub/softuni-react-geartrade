@@ -33,70 +33,50 @@ export default function Details() {
             (alert(err.message));
         }
     }
-    
-    return (
-        <section className="min-h-[calc(100vh-112px)] bg-[url('/images/carParts.jpg')] bg-cover bg-center py-40">
-            <div className="max-w-7xl mx-auto p-1 rounded-5xl bg-gradient-to-r from-black via-red-500 to-blue-500 transform">
-                <div className="max-w-7xl mx-auto bg-white rounded-5xl shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2">
 
-                    {/* IMAGE */}
-                    <div className="h-96 lg:h-auto relative">
-                        <img
-                            src={part.image_url}
-                            alt={part.name}
-                            className="w-full h-full object-cover rounded-l-5xl"
-                        />
-                        {/* Добавяме лек overlay за по-драматичен ефект */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-l-5xl"></div>
+    return (
+        <section className="min-h-[calc(100vh-112px)] bg-[url('/images/carParts.jpg')] bg-cover bg-center py-20">
+            <div className="max-w-7xl mx-auto p-10 rounded-5xl bg-white shadow-2xl grid grid-cols-1 lg:grid-cols-2 gap-10 min-h-[60vh] lg:min-h-[40vh]">
+
+                {/* IMAGE */}
+                <div className="relative w-full h-76 lg:h-[50vh] overflow-hidden rounded-l-5xl flex items-center justify-center bg-gray-100">
+                    <img
+                        src={part.image_url}
+                        alt={part.name}
+                        className="max-w-full max-h-full object-contain"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                </div>
+
+                {/* INFO */}
+                <div className="flex flex-col justify-center p-6 space-y-4">
+                    <h2 className="text-3xl lg:text-4xl font-extrabold mb-2 border-b-2 border-red-500 pb-2">
+                        {part.name}
+                    </h2>
+
+                    <p className="text-gray-700 text-lg mb-2">{part.description}</p>
+
+                    <div className="space-y-1">
+                        <p><span className="font-semibold">Category:</span> {part.category}</p>
+                        <p><span className="font-semibold">OEM Number:</span> {part.oem_number}</p>
+                        <p><span className="font-semibold">Suitable for:</span> {Array.isArray(part.suitable_to) && part.suitable_to.join(', ')}</p>
+                        <p><span className="font-semibold">Brand:</span> {part.brand}</p>
+                        <p className="text-2xl lg:text-3xl font-bold text-red-600 mt-2 border-t-2 border-gray-200 pt-2">${price}</p>
                     </div>
 
-                    {/* INFO */}
-                    <div className="p-10 flex flex-col justify-center space-y-6 relative">
-                        <h2 className="text-4xl font-extrabold text-gray-900 mb-2 border-b-2 border-red-500 inline-block pb-2">
-                            {part.name}
-                        </h2>
+                    <div className="mt-4 flex justify-end space-x-4">
+                        <button className="relative px-6 py-3 bg-white border-4 border-black rounded-lg font-bold text-lg uppercase tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 shadow-md hover:scale-105 hover:shadow-lg transition-transform transition-shadow">
+                            Edit Part
+                            <span className="absolute inset-0 rounded-lg border-2 border-black pointer-events-none"></span>
+                        </button>
 
-                        <p className="text-gray-700 text-lg mb-4">
-                            {part.description}
-                        </p>
-
-                        <div className="space-y-3">
-                            <p className="text-lg">
-                                <span className="font-semibold text-gray-900">Category:</span> {part.category}
-                            </p>
-
-                            <p className="text-lg">
-                                <span className="font-semibold text-gray-900">OEM Number:</span> {part.oem_number}
-                            </p>
-
-                            <p className="text-lg">
-                                <span className="font-semibold text-gray-900">Suitable for:</span> {Array.isArray(part.suitable_to) && part.suitable_to.join(', ')}
-                            </p>
-
-                            <p className="text-lg">
-                                <span className="font-semibold text-gray-900">Brand:</span> {part.brand}
-                            </p>
-
-                            <p className="text-3xl font-bold text-red-600 mt-4 border-t-2 border-gray-200 pt-4">
-                                ${price}
-                            </p>
-                        </div>
-                        <div className="mt-6 flex justify-end space-x-4">
-                            <button
-                                className="relative px-6 py-3 bg-white border-4 border-black rounded-lg font-bold text-lg uppercase tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 shadow-md hover:scale-105 hover:shadow-lg transition-transform transition-shadow"
-                            >
-                                Edit Part
-                                <span className="absolute inset-0 rounded-lg border-2 border-black pointer-events-none"></span>
-                            </button>
-
-                            <button
-                                className="relative px-6 py-3 bg-white border-4 border-black rounded-lg font-bold text-lg uppercase tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-pink-500 shadow-md hover:scale-105 hover:shadow-lg transition-transform transition-shadow"
-                                onClick={deleteGameHandler}
-                            >
-                                Delete Part
-                                <span className="absolute inset-0 rounded-lg border-2 border-black pointer-events-none"></span>
-                            </button>
-                        </div>
+                        <button
+                            className="relative px-6 py-3 bg-white border-4 border-black rounded-lg font-bold text-lg uppercase tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-pink-500 shadow-md hover:scale-105 hover:shadow-lg transition-transform transition-shadow"
+                            onClick={deleteGameHandler}
+                        >
+                            Delete Part
+                            <span className="absolute inset-0 rounded-lg border-2 border-black pointer-events-none"></span>
+                        </button>
                     </div>
                 </div>
             </div>

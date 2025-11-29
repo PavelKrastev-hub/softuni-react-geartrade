@@ -1,4 +1,26 @@
+import { useState } from "react";
+
 export default function EditPart() {
+    const initialValues = {
+        name: '',
+        category: '',
+        oem_number: '',
+        suitable_to: '',
+        price: '',
+        brand: '',
+        description: '',
+        imageUrl: '',
+    };
+
+    const [values, setValues] = useState(initialValues);
+
+    const changeHandler = (e) => {
+        setValues(state => ({
+            ...state,
+            [e.target.name]: e.target.value,
+        }))
+    };
+
     return (
         <section className="min-h-[calc(100vh-112px)] flex items-center justify-center bg-[url('/images/carParts.jpg')] bg-cover bg-center">
             {/* Overlay за по-добър контраст */}
@@ -12,48 +34,62 @@ export default function EditPart() {
                             type="text"
                             placeholder="Name of part"
                             name="name"
+                            onChange={changeHandler}
+                            value={values.title}
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <input
                             type="text"
                             placeholder="Category"
                             name="category"
+                            onChange={changeHandler}
+                            value={values.category}
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <input
                             type="text"
                             placeholder="OEM number"
                             name="oem_number"
+                            onChange={changeHandler}
+                            value={values.oem_number}
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <input
                             type="text"
                             placeholder="Suitable to..."
                             name="suitable_to"
+                            onChange={changeHandler}
+                            value={values.suitable_to}
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <input
                             type="number"
                             placeholder="Price"
                             name="price"
+                            onChange={changeHandler}
+                            value={values.price}
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <input
                             type="text"
                             placeholder="brand"
-                            name="brand"
+                            name="brand"onChange={changeHandler}
+                            value={values.brand}
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <textarea
                             placeholder="Description"
                             name="description"
-                            rows={3}
+                            rows={3}onChange={changeHandler}
+                            value={values.description}
                             className="w-full p-3 rounded border border-gray-300 md:col-span-2"
                         ></textarea>
                         <input
                             type="text"
                             placeholder="Image URL"
                             name="imageUrl"
+                            onChange={changeHandler}
+                            value={values.imageUrl}
                             className="w-full p-3 rounded border border-gray-300 md:col-span-2"
                         />
                         <button

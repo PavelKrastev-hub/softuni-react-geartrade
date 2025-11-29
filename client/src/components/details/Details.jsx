@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { BASE_URL } from "../../utils/constants.js";
 
 export default function Details() {
@@ -65,10 +65,10 @@ export default function Details() {
                     </div>
 
                     <div className="mt-4 flex justify-end space-x-4">
-                        <button className="relative px-6 py-3 bg-white border-4 border-black rounded-lg font-bold text-lg uppercase tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 shadow-md hover:scale-105 hover:shadow-lg transition-transform transition-shadow">
+                        <Link to={`/parts/${partId}/edit`} className="relative px-6 py-3 bg-white border-4 border-black rounded-lg font-bold text-lg uppercase tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 shadow-md hover:scale-105 hover:shadow-lg transition-transform transition-shadow">
                             Edit Part
                             <span className="absolute inset-0 rounded-lg border-2 border-black pointer-events-none"></span>
-                        </button>
+                        </Link>
 
                         <button
                             className="relative px-6 py-3 bg-white border-4 border-black rounded-lg font-bold text-lg uppercase tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-pink-500 shadow-md hover:scale-105 hover:shadow-lg transition-transform transition-shadow"

@@ -10,6 +10,7 @@ import Create from "./components/createPart/CreatePart.jsx";
 import { useState } from "react";
 import Logout from "./components/logout/Logout.jsx";
 import Details from "./components/details/Details.jsx";
+import EditPart from "./components/edit/Edit.jsx";
 
 function App() {
     const [registeredUsers, setRegisteredUsers] = useState([]);
@@ -59,6 +60,7 @@ function App() {
                     <Route path="/parts/create" element={<Create />} />
                     <Route path="/logout" element={<Logout onLogout={logoutHandler} />} />
                     <Route path="/parts/:partId/details" element={<Details />} />
+                    <Route path="/parts/:partId/edit" element={<EditPart />} />
                 </Routes>
             </main>
 

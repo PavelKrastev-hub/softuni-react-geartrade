@@ -1,17 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { BASE_URL } from "../../utils/constants.js";
+import { useParams } from "react-router";
+import request from "../../utils/request.js";
+
+const initialValues = {
+    name: '',
+    category: '',
+    oem_number: '',
+    suitable_to: '',
+    price: '',
+    brand: '',
+    description: '',
+    imageUrl: '',
+};
 
 export default function EditPart() {
-    const initialValues = {
-        name: '',
-        category: '',
-        oem_number: '',
-        suitable_to: '',
-        price: '',
-        brand: '',
-        description: '',
-        imageUrl: '',
-    };
-
+    const { partId } = useParams();
     const [values, setValues] = useState(initialValues);
 
     const changeHandler = (e) => {
@@ -21,13 +25,22 @@ export default function EditPart() {
         }))
     };
 
+    useEffect(() => {
+        request(`${BASE_URL}/${partId}`)
+            .then(result => {
+                setValues(result)
+            })
+            .catch(err => {
+                alert(err.message);
+            });
+    }, [partId]);
+
     return (
         <section className="min-h-[calc(100vh-112px)] flex items-center justify-center bg-[url('/images/carParts.jpg')] bg-cover bg-center">
-            {/* Overlay за по-добър контраст */}
             <div className="w-full h-full bg-black/50 flex items-center justify-center px-6">
                 <div className="bg-white rounded-xl shadow-xl p-10 w-full max-w-3xl">
                     <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">
-                        Add Offer to <span className="text-red-600">GearTrade</span>
+                        Edit Offer <span className="text-red-600">{values.name}</span>
                     </h2>
                     <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <input
@@ -35,7 +48,7 @@ export default function EditPart() {
                             placeholder="Name of part"
                             name="name"
                             onChange={changeHandler}
-                            value={values.title}
+                            value={values.name}
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <input
@@ -73,14 +86,14 @@ export default function EditPart() {
                         <input
                             type="text"
                             placeholder="brand"
-                            name="brand"onChange={changeHandler}
+                            name="brand" onChange={changeHandler}
                             value={values.brand}
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <textarea
                             placeholder="Description"
                             name="description"
-                            rows={3}onChange={changeHandler}
+                            rows={3} onChange={changeHandler}
                             value={values.description}
                             className="w-full p-3 rounded border border-gray-300 md:col-span-2"
                         ></textarea>
@@ -89,7 +102,7 @@ export default function EditPart() {
                             placeholder="Image URL"
                             name="imageUrl"
                             onChange={changeHandler}
-                            value={values.imageUrl}
+                            value={values.image_url}
                             className="w-full p-3 rounded border border-gray-300 md:col-span-2"
                         />
                         <button

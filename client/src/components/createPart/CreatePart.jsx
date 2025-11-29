@@ -53,7 +53,7 @@ export default function CreatePart() {
                         <input
                             type="text"
                             placeholder="Image URL"
-                            name="imageUrl"
+                            name="image_url"
                             className="w-full p-3 rounded border border-gray-300 md:col-span-2"
                         />
                         <button

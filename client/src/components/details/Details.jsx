@@ -84,7 +84,7 @@ export default function Details({
                     </div>
                 </div>
                 <div className="mt-16 max-w-5xl mx-auto space-y-10">
-                    <CreateComment user={user} />
+                    {user && <CreateComment user={user} />}
                     <DetailsComments />
                 </div>
             </section>

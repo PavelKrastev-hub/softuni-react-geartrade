@@ -15,7 +15,7 @@ export default function CreateComment({
 
     const submitHnadler = async () => {
         await request(`${BASE_URL}/comments`, 'POST', {
-            author: user.email,
+            author: user.username,
             message: comment,
             partId,
         })

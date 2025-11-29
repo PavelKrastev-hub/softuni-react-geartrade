@@ -1,20 +1,30 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import request from "../../utils/request.js";
+import { BASE_URL } from "../../utils/constants.js";
+
 export default function DetailsComments() {
+    const [comments, setComments] = useState([]);
+    const { partId } = useParams();
+
+    useEffect(() => {
+        request(`${BASE_URL}/comments`)
+            .then(result => {
+                const partComments = Object.values(result).filter(comment => comment.partId === partId);
+                setComments(partComments)
+            })
+    }, [partId]);
+
     return (
         <div className="space-y-4">
-            <div className="p-4 bg-white rounded-xl shadow border border-gray-200">
-                <p className="font-semibold text-gray-800">John Doe</p>
-                <p className="text-gray-600 text-sm">“Great part, fits perfectly on my car!”</p>
-            </div>
+            {comments.map(comment => (
+                <div key={comment._id} className="p-4 bg-white rounded-xl shadow border border-gray-200">
+                    <p className="font-semibold text-gray-800">{comment.author}</p>
+                    <p className="text-gray-600 text-sm">{comment.message}</p>
+                </div>
+            ))}
 
-            <div className="p-4 bg-white rounded-xl shadow border border-gray-200">
-                <p className="font-semibold text-gray-800">Maria Smith</p>
-                <p className="text-gray-600 text-sm">“Fast delivery and excellent quality.”</p>
-            </div>
 
-            <div className="p-4 bg-white rounded-xl shadow border border-gray-200">
-                <p className="font-semibold text-gray-800">Ivan Petrov</p>
-                <p className="text-gray-600 text-sm">“Would definitely recommend this seller.”</p>
-            </div>
         </div>
     );
 }

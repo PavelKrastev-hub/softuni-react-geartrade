@@ -11,7 +11,7 @@ export default function Details() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`${BASE_URL}/${partId}`)
+        fetch(`${BASE_URL}/parts/${partId}`)
             .then(response => response.json())
             .then(result => setPart(result))
             .catch(err => alert(err.message));
@@ -25,7 +25,7 @@ export default function Details() {
         }
         try {
 
-            await fetch(`${BASE_URL}/${partId}`, {
+            await fetch(`${BASE_URL}/parts/${partId}`, {
                 method: 'DELETE'
             })
             navigate('/parts');

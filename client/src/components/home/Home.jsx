@@ -7,7 +7,7 @@ export default function Home() {
     const [latestParts, setLatestParts] = useState([]);
 
     useEffect(() => {
-        fetch(BASE_URL)
+        fetch(`${BASE_URL}/parts`)
             .then(response => response.json())
             .then(result => {
                 const parts = Object.values(result)

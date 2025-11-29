@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../../utils/constants.js";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import request from "../../utils/request.js";
 
 const initialValues = {
@@ -11,10 +11,11 @@ const initialValues = {
     price: '',
     brand: '',
     description: '',
-    imageUrl: '',
+    image_url: '',
 };
 
 export default function EditPart() {
+    const navigate = useNavigate();
     const { partId } = useParams();
     const [values, setValues] = useState(initialValues);
 
@@ -26,7 +27,7 @@ export default function EditPart() {
     };
 
     useEffect(() => {
-        request(`${BASE_URL}/${partId}`)
+        request(`${BASE_URL}/parts/${partId}`)
             .then(result => {
                 setValues(result)
             })
@@ -35,6 +36,16 @@ export default function EditPart() {
             });
     }, [partId]);
 
+    const editGameHandler = async () => {
+        try {
+            await request(`${BASE_URL}/parts/${partId}`, 'PUT', values);
+
+            navigate(`/parts/${partId}/details`);
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+
     return (
         <section className="min-h-[calc(100vh-112px)] flex items-center justify-center bg-[url('/images/carParts.jpg')] bg-cover bg-center">
             <div className="w-full h-full bg-black/50 flex items-center justify-center px-6">
@@ -42,7 +53,7 @@ export default function EditPart() {
                     <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">
                         Edit Offer <span className="text-red-600">{values.name}</span>
                     </h2>
-                    <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <form className="grid grid-cols-1 md:grid-cols-2 gap-4" action={editGameHandler}>
                         <input
                             type="text"
                             placeholder="Name of part"

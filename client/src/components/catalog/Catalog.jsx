@@ -6,7 +6,7 @@ export default function Catalog() {
     const [parts, setParts] = useState([]);
 
     useEffect(() => {
-        fetch(BASE_URL)
+        fetch(`${BASE_URL}/parts`)
             .then(response => response.json())
             .then(result => setParts(Object.values(result)))
     }, []);

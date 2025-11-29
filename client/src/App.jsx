@@ -59,8 +59,9 @@ function App() {
                     <Route path="/about" element={<AboutUs />} />
                     <Route path="/parts/create" element={<Create />} />
                     <Route path="/logout" element={<Logout onLogout={logoutHandler} />} />
-                    <Route path="/parts/:partId/details" element={<Details />} />
+                    <Route path="/parts/:partId/details" element={<Details user={user} />} />
                     <Route path="/parts/:partId/edit" element={<EditPart />} />
+                    <Route path="/parts/:partId/comments" element={<Comment />} />
                 </Routes>
             </main>
 

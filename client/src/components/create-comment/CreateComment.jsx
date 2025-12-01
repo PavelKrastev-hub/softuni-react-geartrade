@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 
 export default function CreateComment({
     user,
+    onCreate,
 }) {
     const { partId } = useParams();
     const [comment, setComment] = useState('');
@@ -14,11 +15,19 @@ export default function CreateComment({
     }
 
     const submitHnadler = async () => {
-        await request(`${BASE_URL}/comments`, 'POST', {
-            author: user.username,
-            message: comment,
-            partId,
-        })
+        try {
+            await request(`${BASE_URL}/comments`, 'POST', {
+                author: user.username,
+                message: comment,
+                partId,
+            });
+
+            setComment('');
+            onCreate();
+        } catch (error) {
+            alert(error.message);
+        }
+
     }
 
     return (

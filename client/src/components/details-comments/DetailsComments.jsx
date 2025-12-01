@@ -3,7 +3,9 @@ import { useParams } from "react-router";
 import request from "../../utils/request.js";
 import { BASE_URL } from "../../utils/constants.js";
 
-export default function DetailsComments() {
+export default function DetailsComments({
+    refresh,
+}) {
     const [comments, setComments] = useState([]);
     const { partId } = useParams();
 
@@ -11,9 +13,9 @@ export default function DetailsComments() {
         request(`${BASE_URL}/comments`)
             .then(result => {
                 const partComments = Object.values(result).filter(comment => comment.partId === partId);
-                setComments(partComments)
+                setComments(partComments);
             })
-    }, [partId]);
+    }, [partId, refresh]);
 
     return (
         <div className="space-y-4">

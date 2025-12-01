@@ -11,6 +11,7 @@ export default function PartCard({
     // description,
     image_url,
 }) {
+    price = Number(price).toFixed(2);
 
     return (
         <div className="bg-white rounded-xl shadow-md p-4 border border-gray-200 flex flex-col transform hover:scale-105 transition-transform duration-300">

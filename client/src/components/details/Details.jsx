@@ -10,6 +10,8 @@ export default function Details({
     const { partId } = useParams();
     const navigate = useNavigate();
     const [part, setPart] = useState({});
+    const [refresh, setRefresh] = useState(false);
+
     const price = Number(part.price).toFixed(2);
 
     useEffect(() => {
@@ -34,7 +36,11 @@ export default function Details({
         } catch (err) {
             (alert(err.message));
         }
-    }
+    };
+
+    const refreshHandler = () => {
+        setRefresh(state => !state);
+    };
 
     return (
         <>
@@ -84,8 +90,8 @@ export default function Details({
                     </div>
                 </div>
                 <div className="mt-16 max-w-5xl mx-auto space-y-10">
-                    {user && <CreateComment user={user} />}
-                    <DetailsComments />
+                    {user && <CreateComment user={user} onCreate={refreshHandler} />}
+                    <DetailsComments refresh={refresh}/>
                 </div>
             </section>
         </>

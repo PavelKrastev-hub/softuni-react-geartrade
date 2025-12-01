@@ -4,13 +4,15 @@ export default function Header() {
     return (
         <header className="bg-gray-900 text-white">
             <nav className="max-w-9xl mx-auto px-6 py-4 flex items-center justify-between">
-                <h1 className="text-2xl font-bold tracking-wide">
-                    Gear<span className="text-red-500">Trade</span>
-                </h1>
+                <Link to="/">
+                    <h1 className="text-2xl font-bold tracking-wide">
+                        Gear<span className="text-red-500">Trade</span>
+                    </h1>
+                </Link>
                 <ul className="flex gap-6 text-lg">
                     <li>
-                        <Link to="/" className="hover:text-red-400">
-                            Home
+                        <Link to="/parts" className="hover:text-red-400">
+                            Catalog
                         </Link>
                     </li>
                     <li>

@@ -38,6 +38,10 @@ export default function EditPart() {
 
     const editGameHandler = async () => {
         try {
+            values.suitable_to = values.suitable_to
+                .split(',')
+                .map(x => x.trim())
+                .filter(x => x.length > 0);
             await request(`${BASE_URL}/parts/${partId}`, 'PUT', values);
 
             navigate(`/parts/${partId}/details`);

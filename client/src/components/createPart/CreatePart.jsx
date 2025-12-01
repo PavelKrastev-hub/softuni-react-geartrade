@@ -1,4 +1,28 @@
+import { useNavigate } from "react-router";
+import request from "../../utils/request.js";
+import { BASE_URL } from "../../utils/constants.js";
+import { useState } from "react";
+
 export default function CreatePart() {
+    const navigate = useNavigate();
+    const [imageUpload, setImageUpload] = useState(false);
+
+    const createPartHandler = async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
+
+        data.suitable_to = data.suitable_to
+            .split(',')
+            .map(item => item.trim())
+            .filter(item => item.length > 0)
+
+        await request(`${BASE_URL}/parts`, 'POST', data);
+
+        navigate('/parts');
+    }
+
     return (
         <section className="min-h-[calc(100vh-112px)] flex items-center justify-center bg-[url('/images/carParts.jpg')] bg-cover bg-center">
             {/* Overlay за по-добър контраст */}
@@ -7,7 +31,7 @@ export default function CreatePart() {
                     <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">
                         Add Offer to <span className="text-red-600">GearTrade</span>
                     </h2>
-                    <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <form className="grid grid-cols-1 md:grid-cols-2 gap-4" onSubmit={createPartHandler}>
                         <input
                             type="text"
                             placeholder="Name of part"

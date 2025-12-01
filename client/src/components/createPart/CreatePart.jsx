@@ -1,12 +1,10 @@
 import { useNavigate } from "react-router";
 import request from "../../utils/request.js";
 import { BASE_URL } from "../../utils/constants.js";
-import { useState } from "react";
 
 export default function CreatePart() {
     const navigate = useNavigate();
-    const [imageUpload, setImageUpload] = useState(false);
-
+ 
     const createPartHandler = async (e) => {
         e.preventDefault();
 
@@ -16,7 +14,9 @@ export default function CreatePart() {
         data.suitable_to = data.suitable_to
             .split(',')
             .map(item => item.trim())
-            .filter(item => item.length > 0)
+            .filter(item => item.length > 0);
+
+        data._createdOn = Date.now();
 
         await request(`${BASE_URL}/parts`, 'POST', data);
 

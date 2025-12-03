@@ -1,30 +1,33 @@
 import { Link, useNavigate } from "react-router";
+import useForm from "../../hooks/useForm.js";
+import { useContext } from "react";
+import UserContext from "../../contexts/userContext.js";
 
-export default function Login({
-    onLogin,
-}) {
+export default function Login() {
     const navigate = useNavigate();
+    const { loginHandler } = useContext(UserContext)
 
-    const submitHandler = (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(e.target);
-
-        const email = formData.get('email');
-        const passowrd = formData.get('password');
-
-        if (!email || !passowrd) {
+    const submitHandler = async ({ email, password }) => {
+        if (!email || !password) {
             return alert('Email and password are required!');
         }
 
         try {
-            onLogin(email, passowrd);
+            await loginHandler(email, password);
 
             navigate('/');
         } catch (err) {
             alert(err.message);
         }
     };
+
+    const {
+        register,
+        formAction
+    } = useForm(submitHandler, {
+        email: '',
+        passowrd: '',
+    })
 
     return (
         <div className="flex flex-col">
@@ -38,7 +41,7 @@ export default function Login({
                             Login to <span className="text-red-600">GearTrade</span>
                         </h2>
 
-                        <form className="space-y-6" onSubmit={submitHandler}>
+                        <form className="space-y-6" action={formAction}>
                             {/* Email */}
                             <div>
                                 <label className="block text-lg font-medium text-gray-700 mb-1">
@@ -46,7 +49,7 @@ export default function Login({
                                 </label>
                                 <input
                                     type="email"
-                                    name="email"
+                                    {...register('email')}
                                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 outline-none"
                                     placeholder="you@example.com"
                                 />
@@ -59,7 +62,7 @@ export default function Login({
                                 </label>
                                 <input
                                     type="password"
-                                    name="password"
+                                    {...register('password')}
                                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 outline-none"
                                     placeholder="••••••••"
                                 />

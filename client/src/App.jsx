@@ -11,8 +11,7 @@ import { useState } from "react";
 import Logout from "./components/logout/Logout.jsx";
 import Details from "./components/details/Details.jsx";
 import EditPart from "./components/edit/Edit.jsx";
-import request from "./utils/request.js";
-import { BASE_URL } from "./utils/constants.js";
+import UserContext from "./contexts/userContext.js";
 
 function App() {
     const [user, setUser] = useState(null);
@@ -30,7 +29,7 @@ function App() {
         });
 
         const result = await response.json();
-        
+
         console.log(result);
 
         setUser(newUser);
@@ -49,27 +48,37 @@ function App() {
         setUser(null);
     };
 
+    const userContextValues = {
+        user,
+        isAuthenticated: !!user?.accessToken,
+        loginHandler,
+        logoutHandler,
+        registerHandler,
+    }
+
     return (
-        <div className="app-container">
-            <Header user={user} />
+        <UserContext.Provider value={userContextValues}>
+            <div className="app-container">
+                <Header user={user} />
 
-            <main className="main-content">
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login onLogin={loginHandler} />} />
-                    <Route path="/register" element={<Register onRegister={registerHandler} />} />
-                    <Route path="/parts" element={<Catalog />} />
-                    <Route path="/about" element={<AboutUs />} />
-                    <Route path="/parts/create" element={<Create />} />
-                    <Route path="/logout" element={<Logout onLogout={logoutHandler} />} />
-                    <Route path="/parts/:partId/details" element={<Details user={user} />} />
-                    <Route path="/parts/:partId/edit" element={<EditPart />} />
-                    <Route path="/parts/:partId/comments" element={<Comment />} />
-                </Routes>
-            </main>
+                <main className="main-content">
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/login" element={<Login onLogin={loginHandler} />} />
+                        <Route path="/register" element={<Register onRegister={registerHandler} />} />
+                        <Route path="/parts" element={<Catalog />} />
+                        <Route path="/about" element={<AboutUs />} />
+                        <Route path="/parts/create" element={<Create />} />
+                        <Route path="/logout" element={<Logout onLogout={logoutHandler} />} />
+                        <Route path="/parts/:partId/details" element={<Details user={user} />} />
+                        <Route path="/parts/:partId/edit" element={<EditPart />} />
+                        <Route path="/parts/:partId/comments" element={<Comment />} />
+                    </Routes>
+                </main>
 
-            <Footer />
-        </div>
+                <Footer />
+            </div>
+        </UserContext.Provider>
     );
 }
 

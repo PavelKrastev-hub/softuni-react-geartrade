@@ -25,9 +25,7 @@ export function UserProvider(props) {
 
         const result = await request('/users/register', 'POST', newUser);
 
-        console.log(result);
-
-        setUser(newUser);
+        setUser(result);
     }
 
     const loginHandler = async (email, password) => {
@@ -37,7 +35,7 @@ export function UserProvider(props) {
     };
 
     const logoutHandler = () => {
-        return request('/users/logout')
+        return request('/users/logout', null, null, { accessToken: user.accessToken })
             .finally(() => setUser(null));
     };
 

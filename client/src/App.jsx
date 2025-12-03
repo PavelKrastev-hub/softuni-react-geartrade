@@ -11,8 +11,8 @@ import Create from "./components/createPart/CreatePart.jsx";
 import Logout from "./components/logout/Logout.jsx";
 import Details from "./components/details/Details.jsx";
 import EditPart from "./components/edit/Edit.jsx";
-import UserContext from "./contexts/userContext.jsx";
 import { useContext } from "react";
+import UserContext from "./contexts/UserContext.jsx";
 
 function App() {
     const { user } = useContext(UserContext)

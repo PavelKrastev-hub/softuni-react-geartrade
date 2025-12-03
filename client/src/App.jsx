@@ -11,29 +11,32 @@ import { useState } from "react";
 import Logout from "./components/logout/Logout.jsx";
 import Details from "./components/details/Details.jsx";
 import EditPart from "./components/edit/Edit.jsx";
+import request from "./utils/request.js";
+import { BASE_URL } from "./utils/constants.js";
 
 function App() {
-    const [registeredUsers, setRegisteredUsers] = useState([]);
     const [user, setUser] = useState(null);
 
-    const registerHandler = (email, username, password) => {
-        if (registeredUsers.some(user => user.email === email)) {
-            throw new Error('This email already exists!');
-        }
-
-        if (registeredUsers.some(user => user.username === username)) {
-            throw new Error('This username already exists!');
-        }
-
+    const registerHandler = async (email, username, password) => {
         const newUser = { email, password, username };
 
-        setRegisteredUsers((state) => [...state, { email, username, password }]);
+        const response = await fetch('http://localhost:3030/users/register', {
+            method: 'POST',
+            headers: {
+
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(newUser)
+        });
+
+        const result = await response.json();
+        
+        console.log(result);
 
         setUser(newUser);
     }
 
     const loginHandler = (email, password) => {
-        const user = registeredUsers.find(user => user.email === email && user.password === password);
 
         if (!user) {
             throw new Error('Invalid email or password!');

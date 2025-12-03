@@ -1,15 +1,13 @@
 import { Link, useNavigate } from "react-router";
+import useForm from "../../hooks/useForm.js";
 
 export default function Register({
     onRegister,
 }) {
     const navigate = useNavigate();
 
-    const registerSubmit = (formData) => {
-        const email = formData.get('email');
-        const username = formData.get('username');
-        const password = formData.get('password');
-        const rePass = formData.get('rePass');
+    const registerHandler = (values) => {
+        const { email, username, password, rePass } = values;
 
         if (!email || !password || !username) {
             return alert('Email,password and username are required!');
@@ -28,6 +26,16 @@ export default function Register({
         }
     };
 
+    const {
+        register,
+        formAction,
+    } = useForm(registerHandler, {
+        email: '',
+        username: '',
+        password: '',
+        rePass: '',
+    });
+
     return (
         <section
             className="min-h-[calc(100vh-112px)] flex items-center justify-center bg-[url('/images/carParts.jpg')] bg-cover bg-center"
@@ -38,13 +46,13 @@ export default function Register({
                         Register to <span className="text-red-600">GearTrade</span>
                     </h2>
 
-                    <form className="space-y-5" action={registerSubmit}>
+                    <form className="space-y-5" action={formAction}>
                         {/* Email */}
                         <div>
                             <label className="text-black font-medium">Email</label>
                             <input
                                 type="email"
-                                name="email"
+                                {...register('email')}
                                 className="w-full mt-1 p-3 rounded-lg bg-white border border-gray-300 focus:border-blue-500 outline-none" placeholder="Enter email"
                             />
                         </div>
@@ -54,7 +62,7 @@ export default function Register({
                             <label className="text-black font-medium">Username</label>
                             <input
                                 type="text"
-                                name="username"
+                                {...register('username')}
                                 className="w-full mt-1 p-3 rounded-lg bg-white border border-gray-300 focus:border-blue-500 outline-none" placeholder="Enter username"
                             />
                         </div>
@@ -64,7 +72,7 @@ export default function Register({
                             <label className="text-black font-medium">Password</label>
                             <input
                                 type="password"
-                                name="password"
+                                {...register('password')}
                                 className="w-full mt-1 p-3 rounded-lg bg-white border border-gray-300 focus:border-blue-500 outline-none" placeholder="Enter password"
                             />
                         </div>
@@ -74,7 +82,7 @@ export default function Register({
                             <label className="text-black font-medium">Repeat Password</label>
                             <input
                                 type="password"
-                                name="rePass"
+                                {...register('rePass')}
                                 className="w-full mt-1 p-3 rounded-lg bg-white border border-gray-300 focus:border-blue-500 outline-none" placeholder="Repeat password"
                             />
                         </div>

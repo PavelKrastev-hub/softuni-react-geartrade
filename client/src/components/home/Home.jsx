@@ -1,22 +1,10 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import PartCard from "../part-card/PartCard.jsx";
-import { BASE_URL } from "../../utils/constants.js";
+import useRequest from "../../hooks/useRequest.js";
 
 export default function Home() {
-    const [latestParts, setLatestParts] = useState([]);
-
-    useEffect(() => {
-        fetch(`${BASE_URL}/parts`)
-            .then(response => response.json())
-            .then(result => {
-                const parts = Object.values(result)
-                    .sort((a, b) => b._createdOn - a._createdOn)
-                    .slice(0, 3);
-
-                setLatestParts(parts);
-            })
-    }, []);
+    const { data: latestParts } = useRequest(`/data/parts?sortBy=_createdOn%20desc&pageSize=3`, []);
+    console.log(latestParts)
 
     return (
         <section className="min-h-[calc(100vh-112px)] bg-[url('/images/carParts.jpg')] bg-cover bg-center">

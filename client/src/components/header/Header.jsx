@@ -28,7 +28,7 @@ export default function Header() {
                             <>
                                 <li>
                                     <Link to="/parts/create" className="hover:text-red-400">
-                                        Create Offer
+                                        Add Part
                                     </Link>
                                 </li>
                                 <li>

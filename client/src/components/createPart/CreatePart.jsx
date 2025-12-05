@@ -1,15 +1,16 @@
 import { useNavigate } from "react-router";
-import request from "../../utils/request.js";
 import { BASE_URL } from "../../utils/constants.js";
+import useForm from "../../hooks/useForm.js";
+import useRequest from "../../hooks/useRequest.js";
 
 export default function CreatePart() {
     const navigate = useNavigate();
- 
-    const createPartHandler = async (e) => {
-        e.preventDefault();
+    const { request } = useRequest();
 
-        const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData);
+    const createPartHandler = async (values) => {
+        const data = values;
+
+        data.price = Number(data.price).toFixed(2);
 
         data.suitable_to = data.suitable_to
             .split(',')
@@ -18,10 +19,28 @@ export default function CreatePart() {
 
         data._createdOn = Date.now();
 
-        await request(`${BASE_URL}/parts`, 'POST', data);
+        try {
+            await request('/data/parts', 'POST', data);
 
-        navigate('/parts');
+            navigate('/parts');
+        } catch (error) {
+            alert(error.message);
+        }
     }
+
+    const {
+        register,
+        formAction
+    } = useForm(createPartHandler, {
+        name: '',
+        category: '',
+        oem_number: '',
+        suitable_to: '',
+        price: '',
+        brand: '',
+        description: '',
+        image_url: '',
+    })
 
     return (
         <section className="min-h-[calc(100vh-112px)] flex items-center justify-center bg-[url('/images/carParts.jpg')] bg-cover bg-center">
@@ -31,53 +50,53 @@ export default function CreatePart() {
                     <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">
                         Add Offer to <span className="text-red-600">GearTrade</span>
                     </h2>
-                    <form className="grid grid-cols-1 md:grid-cols-2 gap-4" onSubmit={createPartHandler}>
+                    <form className="grid grid-cols-1 md:grid-cols-2 gap-4" action={formAction}>
                         <input
                             type="text"
                             placeholder="Name of part"
-                            name="name"
+                            {...register('name')}
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <input
                             type="text"
                             placeholder="Category"
-                            name="category"
+                            {...register('category')}
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <input
                             type="text"
                             placeholder="OEM number"
-                            name="oem_number"
+                            {...register('oem_number')}
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <input
                             type="text"
                             placeholder="Suitable to..."
-                            name="suitable_to"
+                            {...register('suitable_to')}
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <input
                             type="number"
                             placeholder="Price"
-                            name="price"
+                            {...register('price')}
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <input
                             type="text"
                             placeholder="brand"
-                            name="brand"
+                            {...register('brand')}
                             className="w-full p-3 rounded border border-gray-300"
                         />
                         <textarea
                             placeholder="Description"
-                            name="description"
+                            {...register('description')}
                             rows={3}
                             className="w-full p-3 rounded border border-gray-300 md:col-span-2"
                         ></textarea>
                         <input
                             type="text"
                             placeholder="Image URL"
-                            name="image_url"
+                            {...register('image_url')}
                             className="w-full p-3 rounded border border-gray-300 md:col-span-2"
                         />
                         <button

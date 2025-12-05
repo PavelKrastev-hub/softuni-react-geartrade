@@ -1,15 +1,8 @@
-import { useEffect, useState } from "react";
 import PartCard from "../part-card/PartCard.jsx";
-import { BASE_URL } from "../../utils/constants.js";
+import useRequest from "../../hooks/useRequest.js";
 
 export default function Catalog() {
-    const [parts, setParts] = useState([]);
-
-    useEffect(() => {
-        fetch(`${BASE_URL}/parts`)
-            .then(response => response.json())
-            .then(result => setParts(Object.values(result)))
-    }, []);
+    const { data: parts } = useRequest('/data/parts', []);
 
     return (
         <section

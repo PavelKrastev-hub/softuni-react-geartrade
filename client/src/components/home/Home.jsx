@@ -4,7 +4,6 @@ import useRequest from "../../hooks/useRequest.js";
 
 export default function Home() {
     const { data: latestParts } = useRequest(`/data/parts?sortBy=_createdOn%20desc&pageSize=3`, []);
-    console.log(latestParts)
 
     return (
         <section className="min-h-[calc(100vh-112px)] bg-[url('/images/carParts.jpg')] bg-cover bg-center">

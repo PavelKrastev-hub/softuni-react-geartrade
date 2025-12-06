@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router";
-import { BASE_URL } from "../../utils/constants.js";
 import useForm from "../../hooks/useForm.js";
 import useRequest from "../../hooks/useRequest.js";
 

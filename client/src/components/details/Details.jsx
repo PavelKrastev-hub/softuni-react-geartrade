@@ -1,25 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
-import { BASE_URL } from "../../utils/constants.js";
 import CreateComment from "../create-comment/CreateComment.jsx";
 import DetailsComments from "../details-comments/DetailsComments.jsx";
+import useRequest from "../../hooks/useRequest.js";
 
 export default function Details({
     user,
 }) {
-    const { partId } = useParams();
     const navigate = useNavigate();
-    const [part, setPart] = useState({});
+    const { partId } = useParams();
     const [refresh, setRefresh] = useState(false);
+    const { data: part, request } = useRequest(`/data/parts/${partId}`, {});
 
     const price = Number(part.price).toFixed(2);
-
-    useEffect(() => {
-        fetch(`${BASE_URL}/parts/${partId}`)
-            .then(response => response.json())
-            .then(result => setPart(result))
-            .catch(err => alert(err.message));
-    }, [partId]);
 
     const deleteGameHandler = async () => {
         const isConfirmed = confirm(`Are you sure you want to delete your part - ${part.name}`);
@@ -28,10 +21,7 @@ export default function Details({
             return;
         }
         try {
-
-            await fetch(`${BASE_URL}/parts/${partId}`, {
-                method: 'DELETE'
-            })
+            await request(`/data/parts/${partId}`, 'DELETE');
             navigate('/parts');
         } catch (err) {
             (alert(err.message));
@@ -91,7 +81,7 @@ export default function Details({
                 </div>
                 <div className="mt-16 max-w-5xl mx-auto space-y-10">
                     {user && <CreateComment user={user} onCreate={refreshHandler} />}
-                    <DetailsComments refresh={refresh}/>
+                    <DetailsComments refresh={refresh} />
                 </div>
             </section>
         </>

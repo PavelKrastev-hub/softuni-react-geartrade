@@ -3,11 +3,11 @@ import { Link, useNavigate, useParams } from "react-router";
 import CreateComment from "../create-comment/CreateComment.jsx";
 import DetailsComments from "../details-comments/DetailsComments.jsx";
 import useRequest from "../../hooks/useRequest.js";
+import { useUserContext } from "../../contexts/UserContext.jsx";
 
-export default function Details({
-    user,
-}) {
+export default function Details() {
     const navigate = useNavigate();
+    const {user, isAuthenticated} = useUserContext();
     const { partId } = useParams();
     const [refresh, setRefresh] = useState(false);
     const { data: part, request } = useRequest(`/data/parts/${partId}`, {});
@@ -80,7 +80,7 @@ export default function Details({
                     </div>
                 </div>
                 <div className="mt-16 max-w-5xl mx-auto space-y-10">
-                    {user && <CreateComment user={user} onCreate={refreshHandler} />}
+                    {isAuthenticated && <CreateComment user={user} onCreate={refreshHandler} />}
                     <DetailsComments refresh={refresh} />
                 </div>
             </section>

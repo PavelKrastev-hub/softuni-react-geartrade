@@ -24,6 +24,7 @@ export default function useForm(submitHandler, initialValues) {
 
     return {
         values,
+        setValues,
         register,
         changeHandler,
         formAction,

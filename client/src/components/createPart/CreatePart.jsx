@@ -16,8 +16,6 @@ export default function CreatePart() {
             .map(item => item.trim())
             .filter(item => item.length > 0);
 
-        data._createdOn = Date.now();
-
         try {
             await request('/data/parts', 'POST', data);
 

@@ -26,7 +26,7 @@ export default function Login() {
         formAction
     } = useForm(submitHandler, {
         email: '',
-        passowrd: '',
+        password: '',
     })
 
     return (

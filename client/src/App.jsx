@@ -7,13 +7,14 @@ import Footer from "./components/footer/Footer.jsx";
 import Catalog from "./components/catalog/Catalog.jsx";
 import Register from "./components/register/Register.jsx";
 import AboutUs from "./components/about/aboutUs.jsx";
-import Create from "./components/createPart/CreatePart.jsx";
+import Create from "./components/create-part/CreatePart.jsx";
 import Logout from "./components/logout/Logout.jsx";
 import Details from "./components/details/Details.jsx";
 import EditPart from "./components/edit/Edit.jsx";
 import { useContext } from "react";
 import UserContext from "./contexts/UserContext.jsx";
-import Profile from "./components/Profile/Profile.jsx";
+import Profile from "./components/profile/Profile.jsx";
+import MyParts from "./components/my-parts/MyParts.jsx";
 
 function App() {
     const { user } = useContext(UserContext)
@@ -28,11 +29,12 @@ function App() {
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/logout" element={<Logout />} />
-                        <Route path="/parts" element={<Catalog />} />
                         <Route path="/about" element={<AboutUs />} />
+                        <Route path="/parts" element={<Catalog />} />
                         <Route path="/parts/create" element={<Create />} />
                         <Route path="/parts/:partId/details" element={<Details user={user} />} />
                         <Route path="/parts/:partId/edit" element={<EditPart />} />
+                        <Route path="/parts/:userId/myParts" element={<MyParts />} />
                         <Route path="/users/:userId/profile" element={<Profile />} />
                     </Routes>
                 </main>

@@ -28,14 +28,14 @@ export default function Header() {
                                     Add Part
                                 </Link>
 
-                                <Link to="/parts/myOffers" className="hover:text-red-400">
-                                    My Offers
+                                <Link to={`/parts/${user.id}/myParts`} className="hover:text-red-400">
+                                    My Parts
                                 </Link>
 
                                 <Link to="/logout" className="hover:text-red-400">
                                     Logout
                                 </Link>
-                                <Link to={`/users/${user._id}/profile`} className="hover:text-red-400">
+                                <Link to={`/users/${user.id}/profile`} className="hover:text-red-400">
                                     View Profile {user.username}
                                 </Link>
                             </>

@@ -45,6 +45,9 @@ export function UserProvider(props) {
         const safeUser = {
             email,
             username: result.username,
+            fullName: result.fullName,
+            country: result.country,
+            imageUrl: result.imageUrl,
             id: result._id,
             accessToken: result.accessToken
         }

@@ -19,7 +19,7 @@ export default function AboutUs() {
                     <h3 className="text-2xl font-semibold mt-6 mb-3 text-white">Contact Information</h3>
                     <ul className="space-y-2 text-lg text-gray-200">
                         <li>
-                            <span className="font-semibold">Address:</span> ул. „Автомобилна“ 15, 9000 Варна, България
+                            <span className="font-semibold">Address:</span> 15 Automobile Street, 9000 Varna, Bulgaria
                         </li>
                         <li>
                             <span className="font-semibold">Email:</span> <a href="mailto:info@geartrade.bg" className="text-red-500 hover:underline">info@geartrade.bg</a>

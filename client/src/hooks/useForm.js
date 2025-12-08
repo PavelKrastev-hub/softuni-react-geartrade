@@ -18,7 +18,7 @@ export default function useForm(submitHandler, initialValues) {
         return {
             name: fieldName,
             onChange: changeHandler,
-            value: values[fieldName],
+            value: values[fieldName] ?? '',
         };
     }
 

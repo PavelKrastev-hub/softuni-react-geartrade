@@ -21,14 +21,17 @@ export function UserProvider(props) {
     const [user, setUser] = useLocalStorage(null, 'auth');
     const { request } = useRequest();
 
-    const registerHandler = async (email, username, password) => {
-        const newUser = { email, password, username };
+    const registerHandler = async (email, username, fullName, country, password, imageUrl) => {
+        const newUser = { email, password, username, fullName, country, imageUrl };
 
         const result = await request('/users/register', 'POST', newUser);
 
         const safeUser = {
             email,
             username,
+            fullName,
+            country,
+            imageUrl,
             id: result._id,
             accessToken: result.accessToken
         }

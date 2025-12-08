@@ -8,18 +8,26 @@ export default function Register() {
     const { registerHandler } = useContext(UserContext);
 
     const registerSubmitHandler = async (values) => {
-        const { email, username, password, rePass } = values;
+        const { email, username, fullName, country, password, rePass, imageUrl } = values;
 
-        if (!email || !password || !username) {
-            return alert('Email,password and username are required!');
+        const missing = Object.entries(values)
+            .filter(([value]) => !value || value.trim() === '')
+            .map(([key]) => key);
+
+        if (missing.length > 0) {
+            return alert('All fields are required!');
         }
+
+        // if (!email || !password || !username) {
+        //     return alert('Email,password and username are required!');
+        // }
 
         if (password !== rePass) {
             return alert('Passwords must match!');
         }
 
         try {
-            await registerHandler(email, username, password);
+            await registerHandler(email, username, fullName, country, password, imageUrl);
 
             navigate('/');
         } catch (err) {
@@ -33,6 +41,8 @@ export default function Register() {
     } = useForm(registerSubmitHandler, {
         email: '',
         username: '',
+        fullName: '',
+        country: '',
         password: '',
         rePass: '',
     });
@@ -48,7 +58,6 @@ export default function Register() {
                     </h2>
 
                     <form className="space-y-5" action={formAction}>
-                        {/* Email */}
                         <div>
                             <label className="text-black font-medium">Email</label>
                             <input
@@ -58,7 +67,6 @@ export default function Register() {
                             />
                         </div>
 
-                        {/* Username */}
                         <div>
                             <label className="text-black font-medium">Username</label>
                             <input
@@ -67,8 +75,24 @@ export default function Register() {
                                 className="w-full mt-1 p-3 rounded-lg bg-white border border-gray-300 focus:border-blue-500 outline-none" placeholder="Enter username"
                             />
                         </div>
+                        <div>
+                            <label className="text-black font-medium">Full Name</label>
+                            <input
+                                type="text"
+                                {...register('fullName')}
+                                className="w-full mt-1 p-3 rounded-lg bg-white border border-gray-300 focus:border-blue-500 outline-none" placeholder="Enter email"
+                            />
+                        </div>
 
-                        {/* Password */}
+                        <div>
+                            <label className="text-black font-medium">Country</label>
+                            <input
+                                type="text"
+                                {...register('country')}
+                                className="w-full mt-1 p-3 rounded-lg bg-white border border-gray-300 focus:border-blue-500 outline-none" placeholder="Enter email"
+                            />
+                        </div>
+
                         <div>
                             <label className="text-black font-medium">Password</label>
                             <input
@@ -78,7 +102,6 @@ export default function Register() {
                             />
                         </div>
 
-                        {/* Repeat Password */}
                         <div>
                             <label className="text-black font-medium">Repeat Password</label>
                             <input
@@ -87,8 +110,15 @@ export default function Register() {
                                 className="w-full mt-1 p-3 rounded-lg bg-white border border-gray-300 focus:border-blue-500 outline-none" placeholder="Repeat password"
                             />
                         </div>
+                        <div>
+                            <label className="text-black font-medium">Image URL</label>
+                            <input
+                                type="text"
+                                {...register('imageUrl')}
+                                className="w-full mt-1 p-3 rounded-lg bg-white border border-gray-300 focus:border-blue-500 outline-none" placeholder="Repeat password"
+                            />
+                        </div>
 
-                        {/* Submit Button */}
                         <button
                             type="submit"
                             className="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-lg text-lg font-semibold transition"

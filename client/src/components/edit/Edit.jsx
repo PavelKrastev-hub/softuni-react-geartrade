@@ -40,6 +40,10 @@ export default function EditPart() {
     useEffect(() => {
         request(`/data/parts/${partId}`)
             .then(result => {
+                if (Array.isArray(result.suitable_to)) {
+                    result.suitable_to = result.suitable_to.join(', ');
+                }
+                
                 setValues(result)
             })
             .catch(err => {

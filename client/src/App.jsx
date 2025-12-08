@@ -13,6 +13,7 @@ import Details from "./components/details/Details.jsx";
 import EditPart from "./components/edit/Edit.jsx";
 import { useContext } from "react";
 import UserContext from "./contexts/UserContext.jsx";
+import Profile from "./components/Profile/Profile.jsx";
 
 function App() {
     const { user } = useContext(UserContext)
@@ -32,6 +33,7 @@ function App() {
                         <Route path="/parts/create" element={<Create />} />
                         <Route path="/parts/:partId/details" element={<Details user={user} />} />
                         <Route path="/parts/:partId/edit" element={<EditPart />} />
+                        <Route path="/users/:userId/profile" element={<Profile />} />
                     </Routes>
                 </main>
 

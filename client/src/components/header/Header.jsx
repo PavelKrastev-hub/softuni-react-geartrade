@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { useUserContext } from "../../contexts/UserContext.jsx";
 
 export default function Header() {
-    const { isAuthenticated } = useUserContext();
+    const { user, isAuthenticated } = useUserContext();
 
     return (
         <header className="bg-gray-900 text-white">
@@ -12,54 +12,47 @@ export default function Header() {
                         Gear<span className="text-red-500">Trade</span>
                     </h1>
                 </Link>
-                <ul className="flex gap-6 text-lg">
-                    <li>
-                        <Link to="/parts" className="hover:text-red-400">
-                            Catalog
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/about" className="hover:text-red-400">
-                            About Us
-                        </Link>
-                    </li>
+                <div className="flex gap-6 text-lg">
+
+                    <Link to="/parts" className="hover:text-red-400">
+                        Catalog
+                    </Link>
+
+                    <Link to="/about" className="hover:text-red-400">
+                        About Us
+                    </Link>
                     {isAuthenticated
                         ? (
                             <>
-                                <li>
-                                    <Link to="/parts/create" className="hover:text-red-400">
-                                        Add Part
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/parts/myOffers" className="hover:text-red-400">
-                                        My Offers
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/logout" className="hover:text-red-400">
-                                        Logout
-                                    </Link>
-                                </li>
+                                <Link to="/parts/create" className="hover:text-red-400">
+                                    Add Part
+                                </Link>
+
+                                <Link to="/parts/myOffers" className="hover:text-red-400">
+                                    My Offers
+                                </Link>
+
+                                <Link to="/logout" className="hover:text-red-400">
+                                    Logout
+                                </Link>
+                                <Link to={`/users/${user._id}/profile`} className="hover:text-red-400">
+                                    View Profile {user.username}
+                                </Link>
                             </>
                         )
                         : (
                             <>
-                                <li>
-                                    <Link to="/login" className="hover:text-red-400">
-                                        Login
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/register" className="hover:text-red-400">
-                                        Register
-                                    </Link>
-                                </li>
+                                <Link to="/login" className="hover:text-red-400">
+                                    Login
+                                </Link>
+
+                                <Link to="/register" className="hover:text-red-400">
+                                    Register
+                                </Link>
                             </>
                         )
                     }
-
-                </ul>
+                </div>
             </nav>
         </header>
     );

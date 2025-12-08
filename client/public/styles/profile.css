@@ -1,0 +1,157 @@
+.profile-wrapper {
+    background-image: url("/images/carParts.jpg");
+    padding: 30px 10px;
+    min-height: calc(100vh - 112px);
+    display: flex;
+    justify-content: center;
+}
+
+.profile-container {
+    background: white;
+    width: 900px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.profile-avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #e5e7eb;
+}
+
+.profile-name {
+    font-size: 32px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 6px;
+}
+
+.profile-role {
+    font-size: 18px;
+    color: #6b7280;
+}
+
+/* Section */
+.profile-section {
+    margin-bottom: 35px;
+}
+
+.profile-section h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: #374151;
+}
+
+/* Grid */
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 14px;
+    column-gap: 20px;
+    font-size: 17px;
+    color: #374151;
+}
+
+/* Buttons */
+.profile-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 12px 22px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn.edit {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.btn.edit:hover {
+    background-color: #2563eb;
+}
+
+.btn.danger {
+    background-color: #ef4444;
+    color: white;
+}
+
+.btn.danger:hover {
+    background-color: #dc2626;
+}
+
+/* Container for the buttons */
+.profile-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Base button style */
+.profile-btn {
+    position: relative;
+    padding: 12px 28px;
+    background: white;
+    border: 4px solid black;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+
+    /* Text gradient trick */
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Edit gradient */
+.profile-btn-edit {
+    background-image: linear-gradient(to right, #3b82f6, #9333ea);
+}
+
+/* Delete gradient */
+.profile-btn-delete {
+    background-image: linear-gradient(to right, #ef4444, #ec4899);
+}
+
+/* Border overlay */
+.profile-btn-border {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    border: 2px solid black;
+}

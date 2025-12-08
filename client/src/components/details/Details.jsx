@@ -38,7 +38,6 @@ export default function Details() {
         <section className="min-h-[calc(100vh-112px)] bg-[url('/images/carParts.jpg')] bg-cover bg-center py-20">
             <div className="max-w-7xl mx-auto p-10 rounded-5xl bg-white shadow-2xl grid grid-cols-1 lg:grid-cols-2 gap-10 min-h-[60vh] lg:min-h-[40vh]">
 
-                {/* IMAGE */}
                 <div className="relative w-full h-76 lg:h-[50vh] overflow-hidden rounded-l-5xl flex items-center justify-center bg-gray-100">
                     <img
                         src={part.image_url}
@@ -49,7 +48,6 @@ export default function Details() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                 </div>
 
-                {/* INFO */}
                 <div className="flex flex-col justify-center p-6 space-y-4 relative">
 
                     <button

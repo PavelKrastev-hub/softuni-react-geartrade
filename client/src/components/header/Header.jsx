@@ -32,6 +32,10 @@ export default function Header() {
                                     My Parts
                                 </Link>
 
+                                <Link to={`/users/${user.id}/wishlist`} className="hover:text-red-400">
+                                    Wishlist
+                                </Link>
+
                                 <Link to="/logout" className="hover:text-red-400">
                                     Logout
                                 </Link>

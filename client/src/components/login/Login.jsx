@@ -5,7 +5,7 @@ import UserContext from "../../contexts/UserContext.jsx";
 
 export default function Login() {
     const navigate = useNavigate();
-    const { loginHandler } = useContext(UserContext)
+    const { loginHandler } = useContext(UserContext);
 
     const submitHandler = async ({ email, password }) => {
         if (!email || !password) {

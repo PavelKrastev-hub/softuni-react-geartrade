@@ -1327,6 +1327,14 @@
     var identity = "email";
     var protectedData = {
         users: {
+            "64db9710-a42f-4819-b699-cea189fd22ca": {
+                email: "pavel@abv.bg",
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
+                username: "Pavkata",
+                fullName: "Pavel Krustev",
+                country: "Bulgaria",
+                imageUrl: "/images/pavkata.jpg",
+            },
             "35c62d76-8152-4626-8712-eeb96381bea8": {
                 email: "peter@abv.bg",
                 username: "Peter",
@@ -1462,6 +1470,45 @@
             }
         },
         "parts": {
+            "64e1a2b0-1f3d-4a6e-b8c9-1234567890ab": {
+                "_ownerId": "64db9710-a42f-4819-b699-cea189fd22ca",
+                "name": "Предна броня BMW",
+                "category": "Bumpers",
+                "oem_number": "51117192094",
+                "suitable_to": ["BMW 3 Series E90/E91 2005-2012"],
+                "price": "450.00",
+                "brand": "BMW Original",
+                "description": "Оригинална предна броня за BMW E91, черен цвят, без забележки, подходяща за всички модели 3 Series седан и комби.",
+                "image_url": "https://s13emagst.akamaized.net/products/32108/32107633/images/res_03138de120e582e7abbf40d91aed8f75.jpg",
+                "_createdOn": 1765362033466,
+                "_id": "64e1a2b0-1f3d-4a6e-b8c9-1234567890ab"
+            },
+            "64e1a2b0-2f3e-4b6f-c9d0-0987654321cd": {
+                "_ownerId": "64db9710-a42f-4819-b699-cea189fd22ca",
+                "name": "Задна броня BMW",
+                "category": "Bumpers",
+                "oem_number": "51127192095",
+                "suitable_to": ["BMW 3 Series E90/E91 2005-2012"],
+                "price": "420.00",
+                "brand": "BMW Original",
+                "description": "Оригинална задна броня за BMW E91, черен цвят, включва монтажни елементи, без драскотини и повреди.",
+                "image_url": "https://s13emagst.akamaized.net/products/26714/26713237/images/res_7f4702507f7a9e11277f584df8cac8b6.jpg",
+                "_createdOn": 1765362056789,
+                "_id": "64e1a2b0-2f3e-4b6f-c9d0-0987654321cd"
+            },
+            "64e1a2b0-3f4f-5c7g-d0e1-567890abcdef": {
+                "_ownerId": "64db9710-a42f-4819-b699-cea189fd22ca",
+                "name": "Спортен волан BMW M Performance",
+                "category": "Steering Wheel",
+                "oem_number": "32306796321",
+                "suitable_to": ["BMW 3 Series E90/E91 2005-2012", "BMW 1 Series E81/E82"],
+                "price": "220.00",
+                "brand": "BMW M Performance",
+                "description": "Спортен волан с кожа и алуминиеви елементи, осигурява по-добър захват и спортно усещане при шофиране.",
+                "image_url": "https://frankfurt.apollo.olxcdn.com/v1/files/dkmrohtgxzaw2-BG/image",
+                "_createdOn": 1765362078901,
+                "_id": "64e1a2b0-3f4f-5c7g-d0e1-567890abcdef"
+            },
             "a1b2c3d4-001": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
                 "name": "Спортен въздушен филтър K&N High-Flow",

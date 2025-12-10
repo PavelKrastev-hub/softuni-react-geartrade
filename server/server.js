@@ -1462,95 +1462,144 @@
             }
         },
         "parts": {
-            "f47ac10b-58cc-4372-a567-0e02b2c3d479": {
-                "_id": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
-                "name": "Brake Pad Set",
-                "category": "Brakes",
-                "oem_number": "BP12345",
-                "suitable_to": [
-                    "BMW 3 Series E90",
-                    "BMW 3 Series E91"
-                ],
-                "price": 79.99,
-                "brand": "Brembo",
-                "description": "High-quality ceramic brake pads offering excellent stopping power and low dust production.",
-                "image_url": "https://www.ilmotorsport.de/shop/xxlpics/ND2-7033119/1/1280/1280/Brake-pad-set-Brembo-front-MK4-1.jpg",
-                "_createdOn": 1739964000000
+            "a1b2c3d4-001": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "name": "Спортен въздушен филтър K&N High-Flow",
+                "category": "Air Intake",
+                "oem_number": "33-2387",
+                "suitable_to": ["Audi A4 B8 2008-2015"],
+                "price": "129.00",
+                "brand": "K&N",
+                "description": "Спортният филтър K&N осигурява по-добър въздушен поток и подобрена реакция на двигателя. Миещ и многократен.",
+                "image_url": "https://s13emagst.akamaized.net/products/53464/53463543/images/res_39253c0b6075675232326af7ab142a23.jpg",
+                "_createdOn": 1765362033466,
+                "_id": "a1b2c3d4-001"
             },
-            "9b2d6c8f-1bcd-4f0a-8f02-3c1234de5678": {
-                "_id": "9b2d6c8f-1bcd-4f0a-8f02-3c1234de5678",
-                "name": "Air Filter",
-                "category": "Engine",
-                "oem_number": "AF67890",
-                "suitable_to": [
-                    "Volkswagen Golf 6",
-                    "Audi A3 8P"
-                ],
-                "price": 19.99,
-                "brand": "MANN-Filter",
-                "description": "Premium air filter designed to improve engine efficiency and prolong engine life.",
-                "image_url": "https://renovaciq.bg/wp-content/uploads/2024/04/maslen-filtar-mann-filter-w-814_80-b.webp",
-                "_createdOn": 1740255600000
-            },
-            "3c6e0b8a-9d2f-4c11-8d45-12ab34cd5678": {
-                "_id": "3c6e0b8a-9d2f-4c11-8d45-12ab34cd5678",
-                "name": "Headlight Bulb H7",
+
+            "a1b2c3d4-002": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "name": "LED Задни стопове Dynamic Turn Signal",
                 "category": "Lighting",
-                "oem_number": "HB11223",
-                "suitable_to": [
-                    "Mercedes C-Class W204",
-                    "Mercedes E-Class W212"
-                ],
-                "price": 29.49,
-                "brand": "Osram",
-                "description": "Bright and durable H7 halogen bulbs for clear night visibility and long service life.",
-                "image_url": "https://cbradleymotorsport.co.uk/cdn/shop/products/el1109_1024x1024.jpg?v=1641918478",
-                "_createdOn": 1740428400000
+                "oem_number": "LTGOLF6LED",
+                "suitable_to": ["VW Golf 6 2009-2013"],
+                "price": "289.00",
+                "brand": "Volkswagen",
+                "description": "Модерни LED стопове с динамичен мигач. Подобряват визията и безопасността.",
+                "image_url": "https://s13emagst.akamaized.net/products/17121/17120716/images/res_796a38bc844773a3d7bbe0c34d7bed91.jpg",
+                "_createdOn": 1765362033466,
+                "_id": "a1b2c3d4-002"
             },
-            "a1d4e3f9-12b7-4c33-9c85-7f1203dabc11": {
-                "_id": "a1d4e3f9-12b7-4c33-9c85-7f1203dabc11",
-                "name": "Oil Filter",
-                "category": "Engine",
-                "oem_number": "OF22331",
-                "suitable_to": [
-                    "BMW 5 Series F10",
-                    "BMW 7 Series F01"
-                ],
-                "price": 14.99,
-                "brand": "Bosch",
-                "description": "Durable oil filter ensuring optimal lubrication and engine protection.",
-                "image_url": "https://hndautomotiveparts.com/cdn/shop/files/F026407204.jpg?v=1697457628",
-                "_createdOn": 1740601200000
+
+            "a1b2c3d4-003": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "name": "Предни спирачни дискове Brembo Max",
+                "category": "Brakes",
+                "oem_number": "09.A200.11",
+                "suitable_to": ["BMW 3 Series E90/E91/E92"],
+                "price": "215.00",
+                "brand": "Brembo",
+                "description": "Висококачествени Brembo Max дискове с канали за по-добро охлаждане.",
+                "image_url": "https://media.autodoc.de/360_photos/8714322/h-preview.jpg",
+                "_createdOn": 1765362033466,
+                "_id": "a1b2c3d4-003"
             },
-            "c7f3d9e1-45fd-4b72-8d29-2e402a7cc932": {
-                "_id": "c7f3d9e1-45fd-4b72-8d29-2e402a7cc932",
-                "name": "Front Shock Absorber",
+
+            "a1b2c3d4-004": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "name": "Комплект амортисьори Sachs SuperTouring",
                 "category": "Suspension",
-                "oem_number": "SA55678",
-                "suitable_to": [
-                    "Volkswagen Passat B7",
-                    "Skoda Superb"
-                ],
-                "price": 129.99,
-                "brand": "KYB",
-                "description": "High-performance shock absorber providing stability and comfortable ride.",
-                "image_url": "https://i.ebayimg.com/images/g/4GEAAOSwO2BlMOm8/s-l1200.jpg",
-                "_createdOn": 1740774000000
+                "oem_number": "317 348",
+                "suitable_to": ["Opel Astra H 2004-2014"],
+                "price": "379.00",
+                "brand": "Sachs",
+                "description": "Оригинални амортисьори Sachs за комфорт и стабилност при всякакви условия.",
+                "image_url": "https://s13emagst.akamaized.net/products/30435/30434768/images/res_2c937ef26a3c31135369a06f49f68e15.jpg?width=450&height=450&hash=5919A8F0B219F68F06AB7C9BAD2E4CBE",
+                "_createdOn": 1765362033466,
+                "_id": "a1b2c3d4-004"
             },
-            "d8e0bc42-3a92-4113-989e-234ccbbfa721": {
-                "_id": "d8e0bc42-3a92-4113-989e-234ccbbfa721",
-                "name": "Spark Plug Set",
-                "category": "Ignition",
-                "oem_number": "SP99887",
-                "suitable_to": [
-                    "Audi A4 B8",
-                    "Seat Exeo"
-                ],
-                "price": 39.90,
-                "brand": "NGK",
-                "description": "Premium spark plugs designed for maximum ignition efficiency and engine longevity.",
-                "image_url": "https://m.media-amazon.com/images/I/81U-owLKwTL.jpg",
-                "_createdOn": 1740946800000
+
+            "a1b2c3d4-005": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "name": "Съединителен комплект LuK RepSet",
+                "category": "Clutch",
+                "oem_number": "600 0017 00",
+                "suitable_to": ["Ford Focus Mk2 1.6 TDCi"],
+                "price": "449.00",
+                "brand": "LuK",
+                "description": "Оригинален комплект съединител с висока издръжливост и плавно превключване.",
+                "image_url": "https://s13emagst.akamaized.net/products/53205/53204019/images/res_33d72fab192f5eaac95d894a05ede71a.jpg",
+                "_createdOn": 1765362033466,
+                "_id": "a1b2c3d4-005"
+            },
+
+            "a1b2c3d4-006": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "name": "Изпускателно гърне Remus Sport",
+                "category": "Exhaust",
+                "oem_number": "REMUS-BRZ-001",
+                "suitable_to": ["Subaru BRZ", "Toyota GT86"],
+                "price": "899.00",
+                "brand": "Remus",
+                "description": "Спортно гърне Remus с агресивен тон и повишена производителност.",
+                "image_url": "https://scdn.autodoc.de/catalog/categories/600x600/10414.png",
+                "_createdOn": 1765362033466,
+                "_id": "a1b2c3d4-006"
+            },
+
+            "a1b2c3d4-007": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "name": "EGR клапан Pierburg",
+                "category": "Engine",
+                "oem_number": "7.24809.62.0",
+                "suitable_to": ["Mercedes C-Class W204 2.2 CDI"],
+                "price": "239.00",
+                "brand": "Pierburg",
+                "description": "Оригинален EGR клапан Pierburg за оптимална работа на дизеловия двигател.",
+                "image_url": "https://media.autodoc.de/360_photos/7614454/h-preview.jpg",
+                "_createdOn": 1765362033466,
+                "_id": "a1b2c3d4-007"
+            },
+
+            "a1b2c3d4-008": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "name": "Ксенонови фарове Valeo OEM",
+                "category": "Lighting",
+                "oem_number": "044844",
+                "suitable_to": ["Peugeot 508 2011-2015"],
+                "price": "620.00",
+                "brand": "Valeo",
+                "description": "Оригинални ксенонови фарове Valeo с леща и автоматично нивелиране.",
+                "image_url": "https://cdn.autodoc.de/thumb?id=7950859&m=0&n=0&lng=bg&rev=94077955",
+                "_createdOn": 1765362033466,
+                "_id": "a1b2c3d4-008"
+            },
+
+            "a1b2c3d4-009": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "name": "Керамични предни накладки ATE Ceramic",
+                "category": "Brakes",
+                "oem_number": "13.0470-7297.2",
+                "suitable_to": ["Skoda Octavia 3 2013-2020"],
+                "price": "165.00",
+                "brand": "ATE",
+                "description": "Керамични накладки ATE – по-малко прах, по-тихи и по-дълъг живот.",
+                "image_url": "https://media.autodoc.de/360_photos/956463/h-preview.jpg",
+                "_createdOn": 1765362033466,
+                "_id": "a1b2c3d4-009"
+            },
+
+            "a1b2c3d4-010": {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "name": "Комплект чистачки Bosch Aerotwin",
+                "category": "Wipers",
+                "oem_number": "A864S",
+                "suitable_to": ["BMW X5 F15 2013-2018"],
+                "price": "49.00",
+                "brand": "Bosch",
+                "description": "Bosch Aerotwin – топ чистачки с равномерно и тихо почистване.",
+                "image_url": "https://s13emagst.akamaized.net/products/14167/14166111/images/res_f0cb833018cb33dd081fb5b033840030.jpg",
+                "_createdOn": 1765362033466,
+                "_id": "a1b2c3d4-010"
             }
         },
         catches: {

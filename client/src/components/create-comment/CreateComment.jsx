@@ -17,6 +17,8 @@ export default function CreateComment({
             });
 
             onCreate(createdComment);
+
+            reset();
         } catch (error) {
             alert(error.message);
         }
@@ -25,6 +27,7 @@ export default function CreateComment({
     const {
         register,
         formAction,
+        reset,
     } = useForm(submitHnadler, {
         comment: '',
     })

@@ -1,3 +1,4 @@
+import { useState, useMemo } from "react";
 import PartCard from "../part-card/PartCard.jsx";
 import useRequest from "../../hooks/useRequest.js";
 import { useUserContext } from "../../contexts/UserContext.jsx";
@@ -7,6 +8,16 @@ export default function MyParts() {
     const userId = user?.id;
 
     const { data: parts } = useRequest(`/data/parts?where=_ownerId%3D%22${userId}%22`, []);
+
+    const ITEMS_PER_PAGE = 9;
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const paginatedParts = useMemo(() => {
+        const start = (currentPage - 1) * ITEMS_PER_PAGE;
+        return parts.slice(start, start + ITEMS_PER_PAGE);
+    }, [parts, currentPage]);
+
+    const totalPages = Math.ceil(parts.length / ITEMS_PER_PAGE);
 
     return (
         <section
@@ -30,10 +41,28 @@ export default function MyParts() {
                         </p>
                     )}
 
-                    {parts.map(part => (
+                    {paginatedParts.map(part => (
                         <PartCard key={part._id} {...part} />
                     ))}
                 </div>
+
+                {totalPages > 1 && (
+                    <div className="flex justify-center mt-10 gap-3">
+                        {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                            <button
+                                key={page}
+                                onClick={() => setCurrentPage(page)}
+                                className={`px-4 py-2 rounded-lg text-lg font-semibold transition-all
+                                    ${page === currentPage
+                                        ? "bg-blue-600 text-white shadow-lg"
+                                        : "bg-white/80 hover:bg-blue-200"
+                                    }`}
+                            >
+                                {page}
+                            </button>
+                        ))}
+                    </div>
+                )}
             </div>
         </section>
     );

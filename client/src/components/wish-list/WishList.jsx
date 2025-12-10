@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 export default function Wishlist() {
     const [favorites, setFavorites] = useState([]);
 
-    // Зареждане на любимите части от localStorage при стартиране
     useEffect(() => {
         const stored = JSON.parse(localStorage.getItem("favorites")) || [];
         setFavorites(stored);

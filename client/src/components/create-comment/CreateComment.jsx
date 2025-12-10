@@ -11,12 +11,12 @@ export default function CreateComment({
 
     const submitHnadler = async ({ comment }) => {
         try {
-            await request(`/data/comments`, 'POST', {
+            const createdComment = await request(`/data/comments`, 'POST', {
                 message: comment,
                 partId,
             });
 
-            onCreate();
+            onCreate(createdComment);
         } catch (error) {
             alert(error.message);
         }

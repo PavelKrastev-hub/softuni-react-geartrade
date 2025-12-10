@@ -1,14 +1,24 @@
+import { useUserContext } from "../../contexts/UserContext.jsx";
+import useRequest from "../../hooks/useRequest.js";
 import PartCard from "../part-card/PartCard.jsx";
 import { useEffect, useState } from "react";
 
 export default function Wishlist() {
+    const { user } = useUserContext();
+    const userId = user.id;
+    const { request } = useRequest();
     const [favorites, setFavorites] = useState([]);
 
     useEffect(() => {
-        const stored = JSON.parse(localStorage.getItem("favorites")) || [];
-        setFavorites(stored);
-    }, []);
+        const loadFavorites = async () => {
+            const result = await request(`/data/favorites?addedBy=${userId}`)
+            setFavorites(result)
+        }
 
+        loadFavorites();
+    }, [userId]);
+
+    console.log(user);
     return (
         <section
             className="min-h-[calc(100vh-112px)] bg-[url('/images/carParts.jpg')] bg-cover bg-center bg-fixed"

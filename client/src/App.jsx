@@ -11,14 +11,14 @@ import Create from "./components/create-part/CreatePart.jsx";
 import Logout from "./components/logout/Logout.jsx";
 import Details from "./components/details/Details.jsx";
 import EditPart from "./components/edit/Edit.jsx";
-import { useContext } from "react";
-import UserContext from "./contexts/UserContext.jsx";
 import Profile from "./components/profile/Profile.jsx";
 import MyParts from "./components/my-parts/MyParts.jsx";
-import Wishlist from "./components/wish-list/WishList.jsx";
+import { useUserContext } from "./contexts/UserContext.jsx";
+// import Wishlist from "./components/wish-list/WishList.jsx";
 
 function App() {
-    const { user } = useContext(UserContext)
+    const { user } = useUserContext()
+
     return (
         <>
             <div className="app-container">
@@ -37,7 +37,7 @@ function App() {
                         <Route path="/parts/:partId/edit" element={<EditPart />} />
                         <Route path="/parts/:userId/myParts" element={<MyParts />} />
                         <Route path="/users/:userId/profile" element={<Profile />} />
-                        <Route path="/users/:userId/wishlist" element={<Wishlist />} />
+                        {/* <Route path="/users/:userId/wishlist" element={<Wishlist />} /> */}
                     </Routes>
                 </main>
 

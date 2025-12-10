@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import CreateComment from "../create-comment/CreateComment.jsx";
 import DetailsComments from "../details-comments/DetailsComments.jsx";
@@ -6,12 +5,20 @@ import useRequest from "../../hooks/useRequest.js";
 import { useUserContext } from "../../contexts/UserContext.jsx";
 
 export default function Details() {
+    const { partId } = useParams();
     const navigate = useNavigate();
     const { user, isAuthenticated } = useUserContext();
-    const { partId } = useParams();
-    const [refresh, setRefresh] = useState(false);
     const { data: part, request } = useRequest(`/data/parts/${partId}`, {});
-    const [isFavorite, setIsFavorite] = useState(false); // state за любими
+
+    // const userId = user.id;
+    // const [isFavorite, setIsFavorite] = useState(false);
+
+    const urlParams = new URLSearchParams({
+        where: `partId="${partId}"`,
+        load: 'author=_ownerId:users'
+    });
+
+    const { data: comments, setData: setComments } = useRequest(`/data/comments?${urlParams.toString()}`, []);
 
     const price = Number(part.price).toFixed(2);
 
@@ -27,12 +34,18 @@ export default function Details() {
         }
     };
 
-    const refreshHandler = () => setRefresh(state => !state);
-
-    const handleFavoriteClick = () => {
-        setIsFavorite(prev => !prev);
-        // TODO: добави backend/localStorage логика за любими
+    const createCommentHandler = (createdComment) => {
+        setComments(prevComments => [...prevComments, createdComment]);
     };
+
+    // const favoriteClickHandler = () => {
+    //     try {
+    //         request('/data/favorites', 'POST', { ...part, addedBy: `${userId}` });
+    //         console.log('')
+    //     } catch (error) {
+    //         alert(error.message);
+    //     }
+    // };
 
     return (
         <section className="min-h-[calc(100vh-112px)] bg-[url('/images/carParts.jpg')] bg-cover bg-center py-20">
@@ -50,20 +63,22 @@ export default function Details() {
 
                 <div className="flex flex-col justify-center p-6 space-y-4 relative">
 
-                    <button
-                        onClick={handleFavoriteClick}
-                        className="absolute top-0 right-0 mt-2 mr-2 focus:outline-none"
-                    >
-                        {isFavorite ? (
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-red-500" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                            </svg>
-                        ) : (
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-gray-400 hover:text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                            </svg>
-                        )}
-                    </button>
+                    {/* {isAuthenticated && user.id !== part._ownerId && (
+                        <button
+                            onClick={favoriteClickHandler}
+                            className="absolute top-0 right-0 mt-2 mr-2 focus:outline-none"
+                        >
+                            {isFavorite ? (
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-red-500" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                </svg>
+                            ) : (
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-gray-400 hover:text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                </svg>
+                            )}
+                        </button>
+                    )} */}
 
                     <h2 className="text-3xl lg:text-4xl font-extrabold mb-2 border-b-2 border-red-500 pb-2">
                         {part.name}
@@ -78,27 +93,28 @@ export default function Details() {
                         <p><span className="font-semibold">Brand:</span> {part.brand}</p>
                         <p className="text-2xl lg:text-3xl font-bold text-red-600 mt-2 border-t-2 border-gray-200 pt-2">${price}</p>
                     </div>
+                    {isAuthenticated && user.id === part._ownerId && (
+                        <div className="mt-4 flex justify-end space-x-4">
+                            <Link to={`/parts/${partId}/edit`} className="relative px-6 py-3 bg-white border-4 border-black rounded-lg font-bold text-lg uppercase tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 shadow-md hover:scale-105 hover:shadow-lg transition-transform transition-shadow">
+                                Edit Part
+                                <span className="absolute inset-0 rounded-lg border-2 border-black pointer-events-none"></span>
+                            </Link>
 
-                    <div className="mt-4 flex justify-end space-x-4">
-                        <Link to={`/parts/${partId}/edit`} className="relative px-6 py-3 bg-white border-4 border-black rounded-lg font-bold text-lg uppercase tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500 shadow-md hover:scale-105 hover:shadow-lg transition-transform transition-shadow">
-                            Edit Part
-                            <span className="absolute inset-0 rounded-lg border-2 border-black pointer-events-none"></span>
-                        </Link>
-
-                        <button
-                            className="relative px-6 py-3 bg-white border-4 border-black rounded-lg font-bold text-lg uppercase tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-pink-500 shadow-md hover:scale-105 hover:shadow-lg transition-transform transition-shadow"
-                            onClick={deleteGameHandler}
-                        >
-                            Delete Part
-                            <span className="absolute inset-0 rounded-lg border-2 border-black pointer-events-none"></span>
-                        </button>
-                    </div>
+                            <button
+                                className="relative px-6 py-3 bg-white border-4 border-black rounded-lg font-bold text-lg uppercase tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-pink-500 shadow-md hover:scale-105 hover:shadow-lg transition-transform transition-shadow"
+                                onClick={deleteGameHandler}
+                            >
+                                Delete Part
+                                <span className="absolute inset-0 rounded-lg border-2 border-black pointer-events-none"></span>
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
 
             <div className="mt-16 max-w-5xl mx-auto space-y-10">
-                {isAuthenticated && <CreateComment user={user} onCreate={refreshHandler} />}
-                <DetailsComments refresh={refresh} />
+                {isAuthenticated && <CreateComment user={user} onCreate={createCommentHandler} />}
+                <DetailsComments comments={comments} />
             </div>
         </section>
     );

@@ -1,16 +1,6 @@
-import { useParams } from "react-router";
-import useRequest from "../../hooks/useRequest.js";
-
-export default function DetailsComments() {
-    const { partId } = useParams();
-
-    const urlParams = new URLSearchParams({
-        where: `partId="${partId}"`,
-        load: 'author=_ownerId:users'
-    });
-
-    const { data: comments } = useRequest(`/data/comments?${urlParams.toString()}`, []);
-
+export default function DetailsComments({
+    comments,
+}) {
     return (
         <div className="space-y-4">
             {comments.map(comment => (

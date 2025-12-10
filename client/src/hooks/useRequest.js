@@ -25,7 +25,7 @@ export default function useRequest(url, initialState) {
         if (config.accessToken || isAuthenticated) {
             options.headers = {
                 ...options.headers,
-                'X-Authorization': config.accessToken || user.accessToken,
+                'X-Authorization': config.accessToken || user?.accessToken,
             }
         }
 

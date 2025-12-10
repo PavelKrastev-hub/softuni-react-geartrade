@@ -55,9 +55,18 @@ export function UserProvider(props) {
         setUser(safeUser);
     };
 
-    const logoutHandler = () => {
-        return request('/users/logout', null, null, { accessToken: user.accessToken })
-            .finally(() => setUser(null));
+    const logoutHandler = async () => {
+        if (!user) {
+            return
+        }
+
+        try {
+            await request('/users/logout', 'POST', null, { accessToken: user.accessToken });
+        } catch (error) {
+            alert(error.message);
+        } finally {
+            setUser(null);
+        }
     };
 
     const userContextValues = {

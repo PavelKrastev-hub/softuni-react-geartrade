@@ -35,7 +35,7 @@ export default function Details() {
     };
 
     const createCommentHandler = (createdComment) => {
-        setComments(prevComments => [...prevComments, createdComment]);
+        setComments(prevComments => [...prevComments, { ...createdComment, author: user }]);
     };
 
     // const favoriteClickHandler = () => {

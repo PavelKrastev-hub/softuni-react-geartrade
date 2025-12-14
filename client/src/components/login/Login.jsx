@@ -34,7 +34,6 @@ export default function Login() {
             <section
                 className="min-h-[calc(100vh-112px)] flex items-center justify-center bg-[url('/images/carParts.jpg')] bg-cover bg-center"
             >
-                {/* Overlay за по-добър контраст */}
                 <div className="w-full h-full bg-black/50 flex items-center justify-center px-6">
                     <div className="bg-white rounded-xl shadow-xl p-10 w-full max-w-md border border-gray-200">
                         <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">
@@ -42,7 +41,6 @@ export default function Login() {
                         </h2>
 
                         <form className="space-y-6" action={formAction}>
-                            {/* Email */}
                             <div>
                                 <label className="block text-lg font-medium text-gray-700 mb-1">
                                     Email
@@ -55,7 +53,6 @@ export default function Login() {
                                 />
                             </div>
 
-                            {/* Password */}
                             <div>
                                 <label className="block text-lg font-medium text-gray-700 mb-1">
                                     Password
@@ -68,7 +65,6 @@ export default function Login() {
                                 />
                             </div>
 
-                            {/* Submit */}
                             <button
                                 type="submit"
                                 className="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-lg text-lg font-semibold transition"

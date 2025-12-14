@@ -9,6 +9,18 @@ export default function CreatePart() {
     const createPartHandler = async (values) => {
         const data = values;
 
+        if (!data.name ||
+            !data.oem_number ||
+            !data.category ||
+            !data.suitable_to ||
+            !data.price ||
+            !data.brand ||
+            !data.description ||
+            !data.image_url) {
+
+            return alert('Missing field!')
+        }
+
         data.price = Number(data.price).toFixed(2);
 
         data.suitable_to = data.suitable_to
@@ -41,7 +53,6 @@ export default function CreatePart() {
 
     return (
         <section className="min-h-[calc(100vh-112px)] flex items-center justify-center bg-[url('/images/carParts.jpg')] bg-cover bg-center">
-            {/* Overlay за по-добър контраст */}
             <div className="w-full h-full bg-black/50 flex items-center justify-center px-6">
                 <div className="bg-white rounded-xl shadow-xl p-10 w-full max-w-3xl">
                     <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">

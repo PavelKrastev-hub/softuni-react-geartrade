@@ -10,6 +10,11 @@ export default function CreateComment({
     const { request } = useRequest();
 
     const submitHnadler = async ({ comment }) => {
+
+        if (!comment) {
+            return alert('Field is required!');
+        }
+
         try {
             const createdComment = await request(`/data/comments`, 'POST', {
                 message: comment,

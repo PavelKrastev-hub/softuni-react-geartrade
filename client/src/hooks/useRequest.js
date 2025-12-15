@@ -29,11 +29,18 @@ export default function useRequest(url, initialState) {
             }
         }
 
-
         const response = await fetch(`${BASE_URL}${url}`, options);
 
         if (!response.ok) {
-            throw response.statusText;
+            let error;
+
+            try {
+                error = await response.json();
+            } catch {
+                throw new Error(response.statusText);
+            }
+
+            throw new Error(error.message);
         }
 
         if (response.status === 204) {

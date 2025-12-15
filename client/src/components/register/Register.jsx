@@ -11,16 +11,13 @@ export default function Register() {
         const { email, username, fullName, country, password, rePass, imageUrl } = values;
 
         const missing = Object.entries(values)
-            .filter(([value]) => !value || value.trim() === '')
+            .filter(([, value]) => !value || value.trim() === '')
             .map(([key]) => key);
+
 
         if (missing.length > 0) {
             return alert('All fields are required!');
         }
-
-        // if (!email || !password || !username) {
-        //     return alert('Email,password and username are required!');
-        // }
 
         if (password !== rePass) {
             return alert('Passwords must match!');

@@ -14,6 +14,8 @@ import EditPart from "./components/edit/Edit.jsx";
 import Profile from "./components/profile/Profile.jsx";
 import MyParts from "./components/my-parts/MyParts.jsx";
 import { useUserContext } from "./contexts/UserContext.jsx";
+import AuthGuard from "./components/auth-guard/AuthGuard.jsx";
+import GuestGuard from "./components/guest-guard/GuestGuard.jsx";
 // import Wishlist from "./components/wish-list/WishList.jsx";
 
 function App() {
@@ -27,16 +29,20 @@ function App() {
                 <main className="main-content">
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
+                        <Route element={<AuthGuard />} >
+                            <Route path="/parts/create" element={<Create />} />
+                            <Route path="/parts/:partId/edit" element={<EditPart />} />
+                            <Route path="/parts/:userId/myParts" element={<MyParts />} />
+                            <Route path="/users/:userId/profile" element={<Profile />} />
+                        </Route>
+                        <Route element={<GuestGuard />} >
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
+                        </Route>
                         <Route path="/logout" element={<Logout />} />
                         <Route path="/about" element={<AboutUs />} />
                         <Route path="/parts" element={<Catalog />} />
-                        <Route path="/parts/create" element={<Create />} />
                         <Route path="/parts/:partId/details" element={<Details user={user} />} />
-                        <Route path="/parts/:partId/edit" element={<EditPart />} />
-                        <Route path="/parts/:userId/myParts" element={<MyParts />} />
-                        <Route path="/users/:userId/profile" element={<Profile />} />
                         {/* <Route path="/users/:userId/wishlist" element={<Wishlist />} /> */}
                     </Routes>
                 </main>

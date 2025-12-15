@@ -8,12 +8,10 @@ export default function Logout() {
 
     useEffect(() => {
         logoutHandler()
-            .then(() => navigate('/'))
             .catch(() => {
                 alert('Problem with logout');
-                navigate('/');
             });
-    }, [logoutHandler, navigate]); // run only once on mount
+    }, [logoutHandler, navigate]);
 
     return null;
 }

@@ -9,16 +9,12 @@ export default function CreatePart() {
     const createPartHandler = async (values) => {
         const data = values;
 
-        if (!data.name ||
-            !data.oem_number ||
-            !data.category ||
-            !data.suitable_to ||
-            !data.price ||
-            !data.brand ||
-            !data.description ||
-            !data.image_url) {
+        const missing = Object.entries(values)
+            .filter(([, value]) => !value || value.trim() === '')
+            .map(([key]) => key);
 
-            return alert('Missing field!')
+        if (missing.length > 0) {
+            return alert('All fields are required!');
         }
 
         data.price = Number(data.price).toFixed(2);

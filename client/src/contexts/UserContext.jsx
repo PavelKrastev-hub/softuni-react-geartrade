@@ -1,6 +1,7 @@
 import { createContext, useContext } from "react";
 import useRequest from "../hooks/useRequest.js";
 import useLocalStorage from "../hooks/useLocalStorage.js";
+import { useNavigate } from "react-router";
 
 const UserContext = createContext({
     isAuthenticated: false,
@@ -18,6 +19,7 @@ const UserContext = createContext({
 });
 
 export function UserProvider(props) {
+    const navigate = useNavigate();
     const [user, setUser] = useLocalStorage(null, 'auth');
     const { request } = useRequest();
 
@@ -62,10 +64,11 @@ export function UserProvider(props) {
 
         try {
             await request('/users/logout', 'POST', null, { accessToken: user.accessToken });
+
+            navigate('/');
+            setUser(null);
         } catch (error) {
             alert(error.message);
-        } finally {
-            setUser(null);
         }
     };
 

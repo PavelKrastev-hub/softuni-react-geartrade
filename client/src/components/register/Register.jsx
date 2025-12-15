@@ -1,11 +1,10 @@
 import { Link, useNavigate } from "react-router";
 import useForm from "../../hooks/useForm.js";
-import { useContext } from "react";
-import UserContext from "../../contexts/UserContext.jsx";
+import { useUserContext } from "../../contexts/UserContext.jsx";
 
 export default function Register() {
     const navigate = useNavigate();
-    const { registerHandler } = useContext(UserContext);
+    const { registerHandler } = useUserContext();
 
     const registerSubmitHandler = async (values) => {
         const { email, username, fullName, country, password, rePass, imageUrl } = values;
@@ -13,7 +12,6 @@ export default function Register() {
         const missing = Object.entries(values)
             .filter(([, value]) => !value || value.trim() === '')
             .map(([key]) => key);
-
 
         if (missing.length > 0) {
             return alert('All fields are required!');

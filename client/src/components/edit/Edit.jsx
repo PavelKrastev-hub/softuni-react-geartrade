@@ -5,6 +5,15 @@ import useRequest from "../../hooks/useRequest.js";
 
 export default function EditPart() {
     const editGameHandler = async (values) => {
+
+        const missing = Object.entries(values)
+            .filter(([, value]) => !value || (typeof value === 'string' && value.trim() === ''))
+            .map(([key]) => key);
+
+        if (missing.length > 0) {
+            return alert('All fields are required!');
+        }
+
         try {
             values.suitable_to = (values.suitable_to)
                 .split(',')
@@ -43,7 +52,7 @@ export default function EditPart() {
                 if (Array.isArray(result.suitable_to)) {
                     result.suitable_to = result.suitable_to.join(', ');
                 }
-                
+
                 setValues(result)
             })
             .catch(err => {

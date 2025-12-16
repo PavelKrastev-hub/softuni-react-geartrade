@@ -29,16 +29,16 @@ function App() {
                 <main className="main-content">
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route element={<AuthGuard />} >
-                            <Route path="/parts/create" element={<Create />} />
-                            <Route path="/parts/:partId/edit" element={<EditPart />} />
-                            <Route path="/parts/:userId/myParts" element={<MyParts />} />
-                            <Route path="/users/:userId/profile" element={<Profile />} />
-                        </Route>
-                        <Route element={<GuestGuard />} >
-                            <Route path="/login" element={<Login />} />
-                            <Route path="/register" element={<Register />} />
-                        </Route>
+                        {/* <Route element={<AuthGuard />} > */}
+                        <Route path="/parts/create" element={<Create />} />
+                        <Route path="/parts/:partId/edit" element={<EditPart />} />
+                        <Route path="/parts/:userId/myParts" element={<MyParts />} />
+                        <Route path="/users/:userId/profile" element={<Profile />} />
+                        {/* </Route> */}
+                        {/* <Route element={<GuestGuard />} > */}
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
+                        {/* </Route> */}
                         <Route path="/logout" element={<Logout />} />
                         <Route path="/about" element={<AboutUs />} />
                         <Route path="/parts" element={<Catalog />} />

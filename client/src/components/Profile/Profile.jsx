@@ -30,12 +30,12 @@ export default function Profile() {
                     </div>
                 </div>
 
-                <div className="profile-simple-actions">
+                {/* <div className="profile-simple-actions">
                     <Link to={`/users/${userId}/edit`} className="profile-btn profile-btn-edit">
                         Edit Profile
                         <span className="profile-btn-border"></span>
                     </Link>
-                </div>
+                </div> */}
 
             </div>
         </section>
